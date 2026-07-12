@@ -2,6 +2,11 @@
 
 **Wave:** 4 (additional pages) · **Depends on:** [[SHU-015]]
 
+**Status:**
+
+- [x] Not started
+- [ ] Completed
+
 ## User story
 
 As a prospective client, I want to learn about the business and the people

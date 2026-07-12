@@ -2,6 +2,11 @@
 
 **Wave:** 7 (final gate) · **Depends on:** [[SHU-016]], [[SHU-017]], [[SHU-019]], [[SHU-020]], [[SHU-021]]
 
+**Status:**
+
+- [x] Not started
+- [ ] Completed
+
 This is **not** where accessibility/performance/SEO get addressed for the
 first time — every ticket since [[SHU-001]] is already required to meet the
 [Definition of Done](./DEFINITION-OF-DONE.md) (a11y, CWV, SEO baseline) as

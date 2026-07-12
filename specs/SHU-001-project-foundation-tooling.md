@@ -2,6 +2,11 @@
 
 **Wave:** 0 (foundation) · **Depends on:** none · **Branch:** `shu-001-project-setup`
 
+**Status:**
+
+- [ ] Not started
+- [x] Completed
+
 ## User story
 
 As the site owner with no technical background, I want a live "coming soon"

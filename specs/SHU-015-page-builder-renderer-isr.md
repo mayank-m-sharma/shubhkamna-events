@@ -2,6 +2,11 @@
 
 **Wave:** 3 (homepage & content sections) · **Depends on:** [[SHU-010]], [[SHU-011]], [[SHU-012]], [[SHU-013]], [[SHU-014]]
 
+**Status:**
+
+- [x] Not started
+- [ ] Completed
+
 ## User story
 
 As the site owner, I want my published changes to appear on the live site

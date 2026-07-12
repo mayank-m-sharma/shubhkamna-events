@@ -2,6 +2,11 @@
 
 **Wave:** 2 (global layout) · **Depends on:** [[SHU-006]], [[SHU-007]]
 
+**Status:**
+
+- [x] Not started
+- [ ] Completed
+
 ## User story
 
 As a site visitor, I want consistent navigation and footer information on

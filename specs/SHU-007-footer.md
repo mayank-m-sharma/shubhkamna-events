@@ -2,6 +2,11 @@
 
 **Wave:** 2 (global layout) · **Depends on:** [[SHU-005]]
 
+**Status:**
+
+- [x] Not started
+- [ ] Completed
+
 ## User story
 
 As the site owner, I want my footer contact details, social links, and legal

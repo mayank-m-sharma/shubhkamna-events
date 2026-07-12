@@ -2,6 +2,11 @@
 
 **Wave:** 3 (homepage & content sections) · **Depends on:** [[SHU-009]], [[SHU-005]]
 
+**Status:**
+
+- [x] Not started
+- [ ] Completed
+
 ## User story
 
 As the site owner, I want to list and update the event types/services I

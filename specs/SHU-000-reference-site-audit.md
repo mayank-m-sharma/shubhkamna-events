@@ -2,6 +2,11 @@
 
 **Wave:** 0 (foundation) · **Depends on:** none · **Branch:** `shu-000-reference-audit`
 
+**Status:**
+
+- [x] Not started
+- [ ] Completed
+
 ## User story
 
 As the developer team, before any schema or component is designed, I want a

@@ -2,6 +2,11 @@
 
 **Wave:** 2 (global layout) · **Depends on:** [[SHU-008]]
 
+**Status:**
+
+- [x] Not started
+- [ ] Completed
+
 **Explicitly deferred implementation** — this ticket builds the seam only;
 actual GA4/Mixpanel wiring happens in a later, separate ticket once
 credentials/requirements are provided.

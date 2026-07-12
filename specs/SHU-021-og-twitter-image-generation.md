@@ -2,6 +2,11 @@
 
 **Wave:** 5 (SEO infra hardening) · **Depends on:** [[SHU-003]]
 
+**Status:**
+
+- [x] Not started
+- [ ] Completed
+
 ## User story
 
 As the site owner, I want an attractive preview image when my links are

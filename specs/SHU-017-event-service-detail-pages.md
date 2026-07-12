@@ -2,6 +2,11 @@
 
 **Wave:** 4 (additional pages) · **Depends on:** [[SHU-015]], [[SHU-011]]
 
+**Status:**
+
+- [x] Not started
+- [ ] Completed
+
 ## User story
 
 As a prospective client, I want a dedicated page per service (e.g.

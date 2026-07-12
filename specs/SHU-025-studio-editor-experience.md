@@ -2,6 +2,11 @@
 
 **Wave:** 6 (CMS editor experience) · **Depends on:** all schema tickets ([[SHU-002]]–[[SHU-017]])
 
+**Status:**
+
+- [x] Not started
+- [ ] Completed
+
 ## User story
 
 As a non-technical site owner, I want the CMS editing screen to be simple

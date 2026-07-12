@@ -2,6 +2,11 @@
 
 **Wave:** 3 (homepage & content sections) · **Depends on:** [[SHU-009]], [[SHU-004]]
 
+**Status:**
+
+- [x] Not started
+- [ ] Completed
+
 ## User story
 
 As the site owner, I want to upload and showcase photos from past events, so

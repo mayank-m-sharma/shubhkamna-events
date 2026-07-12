@@ -2,6 +2,11 @@
 
 **Wave:** 3 (homepage & content sections) · **Depends on:** [[SHU-009]]
 
+**Status:**
+
+- [x] Not started
+- [ ] Completed
+
 ## User story
 
 As the site owner, I want to set my homepage's headline, subtext, background

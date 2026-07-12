@@ -2,6 +2,11 @@
 
 **Wave:** 2 (global layout) · **Depends on:** [[SHU-008]]
 
+**Status:**
+
+- [x] Not started
+- [ ] Completed
+
 ## User story
 
 As a visitor who follows a broken or outdated link, I want a helpful, on-brand

@@ -2,6 +2,11 @@
 
 **Wave:** 3 (homepage & content sections) · **Depends on:** [[SHU-009]], [[SHU-005]]
 
+**Status:**
+
+- [x] Not started
+- [ ] Completed
+
 ## User story
 
 As a prospective client, I want a simple enquiry form, so I can reach out

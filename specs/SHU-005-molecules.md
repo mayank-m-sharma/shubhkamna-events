@@ -2,6 +2,11 @@
 
 **Wave:** 1 (design system foundation) · **Depends on:** [[SHU-004]]
 
+**Status:**
+
+- [x] Not started
+- [ ] Completed
+
 ## User story
 
 As a developer, I want composed-but-still-generic UI pieces (nav link, social

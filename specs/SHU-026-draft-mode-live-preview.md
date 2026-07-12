@@ -2,6 +2,11 @@
 
 **Wave:** 6 (CMS editor experience) · **Depends on:** [[SHU-015]], [[SHU-025]]
 
+**Status:**
+
+- [x] Not started
+- [ ] Completed
+
 ## User story
 
 As the site owner, I want to see how a change will look before publishing it

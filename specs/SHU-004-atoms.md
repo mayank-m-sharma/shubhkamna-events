@@ -2,6 +2,11 @@
 
 **Wave:** 1 (design system foundation) · **Depends on:** [[SHU-002]]
 
+**Status:**
+
+- [x] Not started
+- [ ] Completed
+
 ## User story
 
 As a developer building future sections, I want a small set of consistent,

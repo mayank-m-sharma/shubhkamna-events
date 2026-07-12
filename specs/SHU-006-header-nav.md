@@ -2,6 +2,11 @@
 
 **Wave:** 2 (global layout) · **Depends on:** [[SHU-005]]
 
+**Status:**
+
+- [x] Not started
+- [ ] Completed
+
 ## User story
 
 As the site owner, I want to add, reorder, or rename my navigation menu items

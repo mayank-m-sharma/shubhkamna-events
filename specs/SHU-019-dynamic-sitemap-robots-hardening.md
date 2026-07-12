@@ -2,6 +2,11 @@
 
 **Wave:** 5 (SEO infra hardening) · **Depends on:** [[SHU-016]], [[SHU-017]]
 
+**Status:**
+
+- [x] Not started
+- [ ] Completed
+
 ## User story
 
 As the site owner, I want search engines to discover every real page and

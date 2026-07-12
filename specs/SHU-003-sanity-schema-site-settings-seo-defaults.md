@@ -2,6 +2,11 @@
 
 **Wave:** 1 (design system foundation) · **Depends on:** [[SHU-001]]
 
+**Status:**
+
+- [x] Not started
+- [ ] Completed
+
 ## User story
 
 As the site owner, I want to set my logo, favicon, social links, and default
