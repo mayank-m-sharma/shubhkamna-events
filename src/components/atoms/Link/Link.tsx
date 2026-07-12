@@ -11,7 +11,12 @@ function isExternalHref(href: string): boolean {
   return /^https?:\/\//.test(href);
 }
 
-export function Link({ href, children, className }: LinkProps): ReactNode {
+export function Link({
+  href,
+  children,
+  className,
+  "aria-current": ariaCurrent,
+}: LinkProps): ReactNode {
   if (isExternalHref(href)) {
     return (
       <a
@@ -19,6 +24,7 @@ export function Link({ href, children, className }: LinkProps): ReactNode {
         target="_blank"
         rel="noopener noreferrer"
         className={cn(styles.link, className)}
+        aria-current={ariaCurrent}
       >
         {children}
         <Icon name="external-link" size="sm" className={styles.externalIcon} />
@@ -28,7 +34,11 @@ export function Link({ href, children, className }: LinkProps): ReactNode {
   }
 
   return (
-    <NextLink href={href} className={cn(styles.link, className)}>
+    <NextLink
+      href={href}
+      className={cn(styles.link, className)}
+      aria-current={ariaCurrent}
+    >
       {children}
     </NextLink>
   );

@@ -1,5 +1,15 @@
 export type IconName =
-  "chevron-down" | "close" | "menu" | "check" | "star" | "external-link";
+  | "chevron-down"
+  | "close"
+  | "menu"
+  | "check"
+  | "star"
+  | "external-link"
+  | "instagram"
+  | "facebook"
+  | "twitter"
+  | "linkedin"
+  | "youtube";
 
 export type IconSize = "sm" | "md" | "lg";
 

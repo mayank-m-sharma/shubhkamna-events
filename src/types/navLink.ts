@@ -1,8 +1,7 @@
 import type { ReactNode } from "react";
 
-export interface LinkProps {
+export interface NavLinkProps {
   href: string;
   children: ReactNode;
   className?: string;
-  "aria-current"?: "page" | boolean;
 }
