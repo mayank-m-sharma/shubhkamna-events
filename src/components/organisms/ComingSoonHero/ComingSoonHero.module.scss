@@ -1,0 +1,26 @@
+@use "../../../styles/mixins";
+
+.hero {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-md);
+  text-align: center;
+  padding: var(--space-lg);
+  background: var(--color-surface);
+
+  @include mixins.from(md) {
+    padding: var(--space-2xl);
+  }
+}
+
+.tagline {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.message {
+  max-width: 40ch;
+}

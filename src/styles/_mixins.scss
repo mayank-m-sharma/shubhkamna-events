@@ -1,0 +1,20 @@
+// Mobile-first breakpoint mixin. Write base styles unqualified, then opt into
+// larger viewports — never the other way around.
+@use "sass:map";
+
+$breakpoints: (
+  sm: 480px,
+  md: 768px,
+  lg: 1024px,
+  xl: 1280px,
+);
+
+@mixin from($breakpoint) {
+  @if map.has-key($breakpoints, $breakpoint) {
+    @media (min-width: map.get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  } @else {
+    @error "Unknown breakpoint `#{$breakpoint}`.";
+  }
+}

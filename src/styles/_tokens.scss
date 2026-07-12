@@ -1,0 +1,39 @@
+// Fallback design tokens, exposed as CSS custom properties.
+//
+// These are bootstrap defaults only. SHU-002 introduces a CMS-driven "site theme"
+// singleton in Sanity (colors, font families, type scale, spacing) whose values get
+// injected as inline CSS custom properties at the layout root, overriding the
+// fallbacks below at runtime. Components must always read colors/fonts/spacing via
+// `var(--token-name)`, never as literal values, so that a future CMS-driven override
+// works without touching component code.
+:root {
+  --color-primary: #b3273f;
+  --color-secondary: #1f2d3d;
+  --color-accent: #d8a24a;
+  --color-background: #ffffff;
+  --color-surface: #f7f5f2;
+  --color-text: #1a1a1a;
+  --color-text-muted: #5c5c5c;
+  --color-border: #e2e2e2;
+
+  --font-heading: var(--font-heading-fallback, "Georgia", serif);
+  --font-body: var(--font-body-fallback, "Helvetica Neue", Arial, sans-serif);
+
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-md: 1.125rem;
+  --font-size-lg: 1.5rem;
+  --font-size-xl: 2rem;
+  --font-size-2xl: 2.75rem;
+
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2.5rem;
+  --space-2xl: 4rem;
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+}

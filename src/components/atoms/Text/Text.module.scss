@@ -1,0 +1,17 @@
+.text {
+  font-family: var(--font-body);
+  color: var(--color-text);
+  margin: 0;
+}
+
+.muted {
+  color: var(--color-text-muted);
+}
+
+.base {
+  font-size: var(--font-size-base);
+}
+
+.md {
+  font-size: var(--font-size-md);
+}

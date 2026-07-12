@@ -1,0 +1,22 @@
+# SHU-013 — Testimonials Organism
+
+**Wave:** 3 (homepage & content sections) · **Depends on:** [[SHU-009]], [[SHU-005]]
+
+## User story
+
+As the site owner, I want to add and update client testimonials myself, so
+social proof stays current as new events wrap up.
+
+## Technical tasks
+
+- `testimonialsSection` object schema: heading + array of testimonials
+  (quote, author name, optional role/event type, optional photo).
+- `Testimonials` organism: carousel or static grid (decide based on item
+  count), respects `prefers-reduced-motion` (no forced auto-advance
+  animation for users who've opted out), keyboard-navigable controls if a
+  carousel.
+
+## Notes / acceptance criteria
+
+- No autoplay that can't be paused; respects reduced-motion.
+- Unit tests: renders CMS items, handles 0/1/many gracefully.

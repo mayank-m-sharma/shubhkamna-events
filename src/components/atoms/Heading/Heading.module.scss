@@ -1,0 +1,18 @@
+.heading {
+  font-family: var(--font-heading);
+  color: var(--color-text);
+  margin: 0;
+  font-weight: 700;
+}
+
+.xl {
+  font-size: var(--font-size-2xl);
+}
+
+.lg {
+  font-size: var(--font-size-xl);
+}
+
+.md {
+  font-size: var(--font-size-lg);
+}
