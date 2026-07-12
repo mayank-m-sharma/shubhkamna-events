@@ -5,8 +5,8 @@ import { siteSettingsQuery } from "@/lib/sanity/queries";
 import {
   fallbackSiteSettings,
   siteSettingsSchema,
-  type SiteSettings,
 } from "@/lib/validations/siteSettings.schema";
+import type { SiteSettings } from "@/types/siteSettings";
 
 // Wrapped in React's `cache()` so layout + page can both call this during the
 // same request without issuing the GROQ query to Sanity twice.
