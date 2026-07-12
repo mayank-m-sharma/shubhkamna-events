@@ -4,8 +4,8 @@
 
 **Status:**
 
-- [x] Not started
-- [ ] Completed
+- [ ] Not started
+- [x] Completed
 
 ## User story
 

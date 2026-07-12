@@ -1,0 +1,35 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  padding: var(--space-sm) var(--space-lg);
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  font-family: var(--font-body);
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+}
+
+.primary {
+  background: var(--color-primary);
+  color: var(--color-background);
+}
+
+.secondary {
+  background: var(--color-secondary);
+  color: var(--color-background);
+}
+
+.ghost {
+  background: transparent;
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+}

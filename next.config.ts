@@ -13,6 +13,11 @@ const nextConfig: NextConfig = {
   turbopack: {
     root: path.join(__dirname),
   },
+  images: {
+    // cdn.sanity.io is the single, fixed hostname Sanity serves every
+    // project/dataset's image assets from — no per-project subdomain.
+    remotePatterns: [{ protocol: "https", hostname: "cdn.sanity.io" }],
+  },
 };
 
 export default nextConfig;
