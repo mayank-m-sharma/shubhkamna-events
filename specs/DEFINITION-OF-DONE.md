@@ -73,6 +73,25 @@ rebuilds it, with a Status column (`Not started` / `In progress` / `Done`).
 - If implementation reveals a section the checklist doesn't list (something
   [[SHU-000]] missed), add a row rather than skipping the update.
 
+## Content seeding
+
+[[SHU-032]] establishes a one-time (repeatable, idempotent) seed script at
+`scripts/seed/` that publishes [[SHU-000]]'s audit content into Sanity as
+real documents — not just Studio `initialValue` defaults, which only
+pre-fill a new document's form and never publish anything by themselves.
+
+- If a ticket introduces a new content schema (a Sanity document/object
+  type — a new section type, page singleton, or content document), adding
+  that schema's real seed data (sourced from
+  `docs/reference-site-audit.md`) to the seed script is part of finishing
+  the ticket, not an optional follow-up.
+- If the audit has no real content for a new field/shape (e.g. an About
+  page founder bio the reference site never had), say so explicitly in the
+  ticket rather than inventing placeholder copy to seed with.
+- This is what keeps "real data flowing into the app as each ticket lands"
+  true throughout the project, instead of the seed script going stale the
+  first time a schema changes.
+
 ## How this is used
 
 - Every implementation ticket's acceptance criteria includes: "Meets the
