@@ -1,6 +1,6 @@
 # SHU-010 — Hero Organism
 
-**Wave:** 3 (homepage & content sections) · **Depends on:** [[SHU-009]]
+**Wave:** 3 (homepage & content sections) · **Depends on:** [[SHU-009]], [[SHU-003]]
 
 **Status:**
 
@@ -22,6 +22,9 @@ current promotions or season.
   button (see [[SHU-000]]'s audit §2.3/§4).
 - `Hero` organism: responsive background handling, `next/image` `priority`
   loading for LCP, respects `prefers-reduced-motion` if video is used.
+- Optional floating trust badge (e.g. "5.0★ Google Rating | 50+ Reviews"),
+  sourced from [[SHU-003]]'s `reviewRating`/`reviewCount` fields — not
+  hardcoded — and omitted entirely when those fields are unset.
 
 ## Notes / acceptance criteria
 

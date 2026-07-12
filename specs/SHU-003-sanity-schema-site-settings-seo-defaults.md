@@ -19,6 +19,12 @@ without per-page setup.
   hotspot), favicon, default OG/share image, social links (array of
   platform + URL), organization JSON-LD fields (legal name, address, phone),
   default meta title template and description.
+- Add a `whatsappNumber` field (single source of truth for [[SHU-030]]'s
+  global WhatsApp CTAs) and review-trust fields — `reviewRating` (number),
+  `reviewCount` (number), `reviewUrl` (external link) — reused by
+  [[SHU-010]]'s hero badge, [[SHU-013]]'s testimonials link, and
+  [[SHU-031]]'s stats strip, per [[SHU-000]]'s audit findings on the
+  reference site's repeated review-trust elements.
 - Add `@sanity/image-url` and a `urlFor()` helper (first real image usage in
   the project).
 - Extend the Zod schema and `buildMetadata`/`buildOrganizationJsonLd` helpers

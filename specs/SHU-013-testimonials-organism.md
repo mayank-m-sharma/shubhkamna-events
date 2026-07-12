@@ -1,6 +1,6 @@
 # SHU-013 — Testimonials Organism
 
-**Wave:** 3 (homepage & content sections) · **Depends on:** [[SHU-009]], [[SHU-005]]
+**Wave:** 3 (homepage & content sections) · **Depends on:** [[SHU-009]], [[SHU-005]], [[SHU-003]]
 
 **Status:**
 
@@ -22,6 +22,8 @@ social proof stays current as new events wrap up.
   count), respects `prefers-reduced-motion` (no forced auto-advance
   animation for users who've opted out), keyboard-navigable controls if a
   carousel.
+- Optional "read more reviews" link, sourced from [[SHU-003]]'s `reviewUrl`/
+  `reviewCount` fields — not hardcoded — omitted when unset.
 
 ## Notes / acceptance criteria
 
