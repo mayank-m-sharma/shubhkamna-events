@@ -1,6 +1,6 @@
 # SHU-018 — 404 / Error Boundaries
 
-**Wave:** 4 (additional pages) · **Depends on:** [[SHU-008]]
+**Wave:** 2 (global layout) · **Depends on:** [[SHU-008]]
 
 ## User story
 
@@ -21,3 +21,4 @@ the real site.
 - `curl -I` on a nonexistent path returns `404`.
 - Error pages are on-brand (use theme tokens/atoms), not default Next.js
   boilerplate.
+- Meets the project [Definition of Done](./DEFINITION-OF-DONE.md).

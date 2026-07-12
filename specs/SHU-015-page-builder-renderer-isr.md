@@ -24,3 +24,4 @@ within moments, without a manual redeploy, so editing feels immediate.
   webhook's round-trip time (no manual redeploy).
 - Adding a new section type in a future ticket requires no changes to this
   renderer's core logic, only a new registry entry.
+- Meets the project [Definition of Done](./DEFINITION-OF-DONE.md).

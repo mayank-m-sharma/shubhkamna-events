@@ -23,3 +23,4 @@ instead of hand-rolling markup each time.
   primitives beyond layout wrappers.
 - Props shape mirrors the corresponding Sanity object type 1:1 so organisms
   can pass CMS data through with minimal mapping.
+- Meets the project [Definition of Done](./DEFINITION-OF-DONE.md).

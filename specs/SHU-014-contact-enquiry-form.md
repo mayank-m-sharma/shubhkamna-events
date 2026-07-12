@@ -28,3 +28,4 @@ editable, and I want protection from spam submissions.
 - Client and server validate with the _same_ Zod schema (no drift).
 - Honeypot field is visually hidden but not `display:none` (some spam bots
   skip hidden-via-CSS fields) — use an off-screen/clip technique instead.
+- Meets the project [Definition of Done](./DEFINITION-OF-DONE.md).

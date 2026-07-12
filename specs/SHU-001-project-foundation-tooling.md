@@ -24,7 +24,10 @@ once, so every subsequent ticket only adds features — never fixes plumbing.
   `eslint-config-prettier`, Prettier, all wired per the project's required
   rule list (code quality, performance, react/next, a11y, security,
   maintainability, typescript, formatting).
-- Jest 30 + `next/jest` (SWC transform, no `ts-jest`) + React Testing Library.
+- Jest 30 + `next/jest` (SWC transform, no `ts-jest`) + React Testing Library
+  - `jest-axe` wired into the test setup, available to every ticket from the
+    start (accessibility is a per-ticket requirement — see
+    [Definition of Done](./DEFINITION-OF-DONE.md) — not a separate late audit).
 - Zustand store (`useUIStore`) seeding the client-state pattern.
 - Zod schema for the Sanity `siteSettings` document, parsed at the fetch
   boundary (`getSiteSettings`), with a typed fallback.
@@ -57,3 +60,4 @@ once, so every subsequent ticket only adds features — never fixes plumbing.
   component code.
 - Manual, user-owned follow-ups: Sanity CORS origins, Vercel project +
   env vars, first Site Settings document publish.
+- Meets the project [Definition of Done](./DEFINITION-OF-DONE.md).

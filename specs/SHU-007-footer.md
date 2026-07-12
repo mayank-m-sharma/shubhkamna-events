@@ -20,3 +20,4 @@ links to be editable, so they stay current without a code change.
 - Copyright year updates automatically (no annual content edit needed).
 - Unit tests: renders CMS-driven columns/links, contact block optional
   fields degrade gracefully when empty.
+- Meets the project [Definition of Done](./DEFINITION-OF-DONE.md).

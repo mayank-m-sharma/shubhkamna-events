@@ -1,6 +1,6 @@
 # SHU-026 — Draft Mode + Live Preview
 
-**Wave:** 8 (CMS editor experience) · **Depends on:** [[SHU-015]], [[SHU-025]]
+**Wave:** 6 (CMS editor experience) · **Depends on:** [[SHU-015]], [[SHU-025]]
 
 ## User story
 
@@ -23,3 +23,4 @@ live, so I can catch mistakes without exposing them to visitors first.
   it ever being reachable by a search engine or a visitor without the
   preview link.
 - Exiting preview mode is a single, obvious action.
+- Meets the project [Definition of Done](./DEFINITION-OF-DONE.md).

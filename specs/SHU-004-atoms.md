@@ -26,3 +26,4 @@ without re-implementing buttons and text styles each time.
   imports.
 - `Image` fails a prop-types/TS check if `alt` is omitted (enforces
   `jsx-a11y/alt-text` at the type level, not just lint level).
+- Meets the project [Definition of Done](./DEFINITION-OF-DONE.md).

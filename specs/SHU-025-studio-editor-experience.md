@@ -1,6 +1,6 @@
 # SHU-025 — Studio Desk Structure & Editor Experience
 
-**Wave:** 8 (CMS editor experience) · **Depends on:** all schema tickets ([[SHU-002]]–[[SHU-017]])
+**Wave:** 6 (CMS editor experience) · **Depends on:** all schema tickets ([[SHU-002]]–[[SHU-017]])
 
 ## User story
 
@@ -22,3 +22,4 @@ and hard to misuse, so I can confidently update my own site.
 - Opening Studio for the first time, an untrained editor can find "edit my
   homepage" or "change my logo" without guidance.
 - No singleton type can accidentally be duplicated via the UI.
+- Meets the project [Definition of Done](./DEFINITION-OF-DONE.md).

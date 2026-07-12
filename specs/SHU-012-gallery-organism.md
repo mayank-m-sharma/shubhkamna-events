@@ -22,3 +22,6 @@ new visitors can see the quality of my work.
 - Lightbox fully keyboard-operable; doesn't trap focus when closed.
 - No CLS from images (explicit width/height/aspect-ratio from Sanity's image
   metadata).
+- Schema fields match the gallery content shape identified in [[SHU-000]]'s
+  audit.
+- Meets the project [Definition of Done](./DEFINITION-OF-DONE.md).

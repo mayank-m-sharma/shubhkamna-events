@@ -1,6 +1,6 @@
 # SHU-024 — Pluggable Analytics Adapter Infrastructure
 
-**Wave:** 7 (analytics infra) · **Depends on:** [[SHU-008]]
+**Wave:** 2 (global layout) · **Depends on:** [[SHU-008]]
 
 **Explicitly deferred implementation** — this ticket builds the seam only;
 actual GA4/Mixpanel wiring happens in a later, separate ticket once
@@ -28,3 +28,4 @@ measurement needs.
   tab) — the seam has no cost until used.
 - Adding a real provider later is additive (new registry entry + env var),
   not a rewrite of call sites.
+- Meets the project [Definition of Done](./DEFINITION-OF-DONE.md).

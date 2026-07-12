@@ -19,3 +19,6 @@ prospective clients see my current offerings.
 
 - Grid reflows correctly from 1 column (mobile) up to desktop.
 - Unit tests: renders N CMS items, handles 0/1/many gracefully.
+- Schema fields match the services content shape identified in [[SHU-000]]'s
+  audit.
+- Meets the project [Definition of Done](./DEFINITION-OF-DONE.md).

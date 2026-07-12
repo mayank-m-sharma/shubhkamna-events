@@ -23,3 +23,4 @@ myself, so I don't need a developer every time my service list changes.
 - `react-hooks/exhaustive-deps` clean; no hardcoded nav items.
 - Unit tests: renders CMS-driven items, toggles mobile state, closes on
   Escape/outside click.
+- Meets the project [Definition of Done](./DEFINITION-OF-DONE.md).

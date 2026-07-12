@@ -21,3 +21,4 @@ ignore admin/draft pages, so my SEO reflects only what visitors should see.
 - Every real page appears in `/sitemap.xml`; `/studio` and preview URLs
   never do.
 - `lastModified` values are real, not hardcoded to build time.
+- Meets the project [Definition of Done](./DEFINITION-OF-DONE.md).

@@ -24,6 +24,9 @@ as my brand does.
 - Contrast validation: warn (in Studio, via a custom input component or
   validation rule) if a chosen text/background pair fails WCAG AA — a
   non-technical editor can otherwise easily ship illegible combinations.
+- Default swatch/font-pairing options should reflect the palette/typography
+  observed in [[SHU-000]]'s audit rather than arbitrary placeholders — the
+  owner can still change any of it from the CMS.
 
 ## Notes / acceptance criteria
 
@@ -32,3 +35,4 @@ as my brand does.
 - No component ever hardcodes a hex value or font-family string.
 - Falls back gracefully (SHU-001 defaults) if the theme document is
   unpublished or invalid.
+- Meets the project [Definition of Done](./DEFINITION-OF-DONE.md).

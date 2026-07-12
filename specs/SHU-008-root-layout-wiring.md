@@ -22,3 +22,4 @@ every page, so I can always find my way around and contact the business.
 - Only one `<h1>` per page still holds (Header must not introduce a second
   one).
 - Lighthouse/axe: no landmark or heading-order violations introduced.
+- Meets the project [Definition of Done](./DEFINITION-OF-DONE.md).

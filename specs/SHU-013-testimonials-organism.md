@@ -20,3 +20,6 @@ social proof stays current as new events wrap up.
 
 - No autoplay that can't be paused; respects reduced-motion.
 - Unit tests: renders CMS items, handles 0/1/many gracefully.
+- Schema fields match the testimonials content shape identified in
+  [[SHU-000]]'s audit.
+- Meets the project [Definition of Done](./DEFINITION-OF-DONE.md).

@@ -19,3 +19,4 @@ shared on WhatsApp/Facebook/Twitter, so shared links look professional.
 - Every page has a valid `og:image` and `twitter:image` at the recommended
   dimensions.
 - Falls back sensibly with zero CMS images configured.
+- Meets the project [Definition of Done](./DEFINITION-OF-DONE.md).

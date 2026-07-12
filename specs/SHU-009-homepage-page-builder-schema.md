@@ -1,6 +1,6 @@
 # SHU-009 — Sanity Schema: Homepage Page-Builder
 
-**Wave:** 3 (homepage & content sections) · **Depends on:** [[SHU-008]]
+**Wave:** 3 (homepage & content sections) · **Depends on:** [[SHU-008]], [[SHU-000]]
 
 ## User story
 
@@ -22,3 +22,8 @@ page layout can evolve without a developer.
   with no code change.
 - Schema validates that at least one section exists (empty homepage is
   disallowed).
+- Section set/order matches the reference site's homepage structure by
+  default (it's the seed content source per [[SHU-000]]); deviating requires
+  a documented reason (e.g. an accessibility or UX anti-pattern flagged in
+  [[SHU-000]]'s gap notes), not just convenience.
+- Meets the project [Definition of Done](./DEFINITION-OF-DONE.md).

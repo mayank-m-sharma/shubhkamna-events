@@ -22,3 +22,6 @@ if it fits my needs before enquiring.
 
 - 404s correctly (see [[SHU-018]]) for unknown slugs.
 - Each detail page has a unique canonical URL and unique title/description.
+- Detail-page fields match the service/detail content shape identified in
+  [[SHU-000]]'s audit.
+- Meets the project [Definition of Done](./DEFINITION-OF-DONE.md).

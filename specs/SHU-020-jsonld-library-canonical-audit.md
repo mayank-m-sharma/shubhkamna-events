@@ -21,3 +21,4 @@ searches.
   (manually spot-checked).
 - No two distinct URLs serve identical primary content without one
   canonicalizing to the other.
+- Meets the project [Definition of Done](./DEFINITION-OF-DONE.md).

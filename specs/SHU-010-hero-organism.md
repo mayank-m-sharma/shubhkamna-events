@@ -21,3 +21,6 @@ current promotions or season.
   shift (explicit dimensions/aspect-ratio).
 - Unit tests: renders CMS copy, CTA link present, falls back gracefully with
   no video/image set.
+- Schema fields match the hero content shape identified in [[SHU-000]]'s
+  audit.
+- Meets the project [Definition of Done](./DEFINITION-OF-DONE.md).

@@ -27,3 +27,6 @@ without per-page setup.
   when not.
 - All new fields have Studio field descriptions written for a non-technical
   editor.
+- Default meta title template/description reflect [[SHU-000]]'s findings
+  where the reference site suggests a sensible starting point.
+- Meets the project [Definition of Done](./DEFINITION-OF-DONE.md).
