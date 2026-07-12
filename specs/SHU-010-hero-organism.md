@@ -16,7 +16,10 @@ current promotions or season.
 ## Technical tasks
 
 - `heroSection` object schema: headline, subhead, background image
-  (with mobile-specific crop via hotspot) or video, CTA button (label + link).
+  (with mobile-specific crop via hotspot) or video, a primary CTA button
+  (label + link) and an optional secondary CTA button (label + link) — the
+  reference site's hero uses a primary+secondary CTA pair, not a single
+  button (see [[SHU-000]]'s audit §2.3/§4).
 - `Hero` organism: responsive background handling, `next/image` `priority`
   loading for LCP, respects `prefers-reduced-motion` if video is used.
 
@@ -24,8 +27,8 @@ current promotions or season.
 
 - LCP element is the hero heading/image, loaded with priority, no layout
   shift (explicit dimensions/aspect-ratio).
-- Unit tests: renders CMS copy, CTA link present, falls back gracefully with
-  no video/image set.
+- Unit tests: renders CMS copy, primary CTA link present, secondary CTA
+  renders only when set, falls back gracefully with no video/image set.
 - Schema fields match the hero content shape identified in [[SHU-000]]'s
   audit.
 - Meets the project [Definition of Done](./DEFINITION-OF-DONE.md).
