@@ -12,6 +12,15 @@ regardless of whether the ticket mentions it explicitly.
 wires CI enforcement and re-verifies nothing regressed — it is not where
 these concerns get addressed for the first time.
 
+For the _how_, not just the _what_, see the topic-specific guides in
+[`/steering`](../steering): [react.md](../steering/react.md),
+[typescript.md](../steering/typescript.md),
+[performance-optimization.md](../steering/performance-optimization.md),
+[unit-tests.md](../steering/unit-tests.md),
+[accessibility.md](../steering/accessibility.md),
+[code-quality.md](../steering/code-quality.md),
+[git-workflow.md](../steering/git-workflow.md).
+
 ## Accessibility
 
 - Semantic HTML first (`header`/`nav`/`main`/`article`/`footer`), ARIA only
@@ -46,6 +55,23 @@ these concerns get addressed for the first time.
 - Correct HTTP status codes (no soft-404s, no 200 on error paths).
 - New routes are reachable from `sitemap.ts` (or intentionally excluded with
   a noted reason, e.g. draft/preview paths).
+
+## Reference-site parity tracking
+
+[[SHU-000]] produces `docs/reference-parity-checklist.md` — a living table
+mapping every section/page of the reference site
+(https://dynamo-studio.github.io/Shubhkamna-Events-Demo/) to the ticket that
+rebuilds it, with a Status column (`Not started` / `In progress` / `Done`).
+
+- If a ticket implements a section/page listed in that checklist, updating
+  its row to `Done` (with a one-line note — what was carried over, what was
+  deliberately changed and why) is part of finishing the ticket, not an
+  optional afterthought.
+- This is what gives an at-a-glance answer to "how much of the reference
+  site have we rebuilt so far" at any point in the project, without having
+  to re-derive it from commit history.
+- If implementation reveals a section the checklist doesn't list (something
+  [[SHU-000]] missed), add a row rather than skipping the update.
 
 ## How this is used
 

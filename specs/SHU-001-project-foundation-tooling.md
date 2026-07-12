@@ -16,6 +16,10 @@ once, so every subsequent ticket only adds features — never fixes plumbing.
 ## Technical tasks
 
 - Next.js 16 (App Router, `src/` dir, TypeScript, `@/*` alias), React 19.
+- `src/types/` established as the centralized types directory (one file per
+  domain) from the first commit — every subsequent ticket imports its prop/
+  data types from there instead of declaring them inline (see
+  [steering/typescript.md](../steering/typescript.md)).
 - TypeScript pinned to 6.0.3 (not the "latest" 7.x Go-native compiler —
   `typescript-eslint` and `ts-jest` don't support it yet).
 - ESLint 9.39.5 (flat config) — not 10.x, because `eslint-plugin-react`

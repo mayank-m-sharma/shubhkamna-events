@@ -51,11 +51,33 @@ images) are not carried over, only its content and design intent are.
     build (non-semantic markup, missing alt text, inaccessible carousels,
     hardcoded copy, unoptimized images) called out explicitly so later
     tickets rebuild the _result_ faithfully without reproducing the _flaws_.
+- A living progress tracker at `docs/reference-parity-checklist.md`: one row
+  per reference-site section/page, the ticket(s) that rebuild it, and a
+  Status column (`Not started` / `In progress` / `Done`) — every row starts
+  `Not started`. Seed it with at least the mapping already implied by the
+  existing spec set (add rows if the crawl finds more):
+
+  | Reference section          | Ticket(s)   | Status      |
+  | -------------------------- | ----------- | ----------- |
+  | Header / nav               | [[SHU-006]] | Not started |
+  | Footer                     | [[SHU-007]] | Not started |
+  | Home — Hero                | [[SHU-010]] | Not started |
+  | Home — Services/offerings  | [[SHU-011]] | Not started |
+  | Home — Gallery             | [[SHU-012]] | Not started |
+  | Home — Testimonials        | [[SHU-013]] | Not started |
+  | Home — Contact/enquiry     | [[SHU-014]] | Not started |
+  | About page                 | [[SHU-016]] | Not started |
+  | Service/event detail pages | [[SHU-017]] | Not started |
+
+  This checklist is what tickets update as they ship — see the
+  [Definition of Done](./DEFINITION-OF-DONE.md)'s "Reference parity
+  tracking" section for the update rule.
 
 ## Notes / acceptance criteria
 
-- `docs/reference-site-audit.md` exists and is committed before any ticket in
-  Wave 1+ that touches content schema begins implementation.
+- `docs/reference-site-audit.md` and `docs/reference-parity-checklist.md`
+  both exist and are committed before any ticket in Wave 1+ that touches
+  content schema begins implementation.
 - The plan captures enough real seed content (copy + images) that
   [[SHU-002]]'s theme defaults and the first published homepage/about/service
   content can be populated from it directly, without waiting on new client
