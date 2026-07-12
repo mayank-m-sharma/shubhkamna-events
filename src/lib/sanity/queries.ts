@@ -30,6 +30,16 @@ export const siteSettingsQuery = `*[_type == "siteSettings"][0]{
   reviewUrl
 }`;
 
+export const headerConfigQuery = `*[_type == "headerConfig"][0]{
+  logo ${imageProjection},
+  navItems[]{
+    label,
+    href
+  },
+  ctaLabel,
+  ctaHref
+}`;
+
 export const siteThemeQuery = `*[_type == "siteTheme"][0]{
   colorPrimary,
   colorSecondary,

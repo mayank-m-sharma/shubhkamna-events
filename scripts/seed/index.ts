@@ -1,3 +1,4 @@
+import { headerConfigSeed } from "./data/headerConfig";
 import { siteSettingsSeed } from "./data/siteSettings";
 import { siteThemeSeed } from "./data/siteTheme";
 import { sanityWriteClient } from "./sanityWriteClient";
@@ -17,6 +18,13 @@ async function main(): Promise<void> {
     ...siteThemeSeed,
   });
   console.warn(`siteTheme: ${themeResult}`);
+
+  const headerResult = await upsertDocument(sanityWriteClient, {
+    _id: "headerConfig",
+    _type: "headerConfig",
+    ...headerConfigSeed,
+  });
+  console.warn(`headerConfig: ${headerResult}`);
 }
 
 main().catch((error: unknown) => {
