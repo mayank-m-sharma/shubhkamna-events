@@ -1,0 +1,72 @@
+@use "../../../styles/mixins";
+
+.header {
+  background: var(--color-background);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  padding: var(--space-sm) var(--space-md);
+}
+
+.logoLink {
+  display: inline-flex;
+  align-items: center;
+}
+
+.siteName {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.menuToggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  color: var(--color-text);
+  cursor: pointer;
+  padding: var(--space-xs);
+
+  @include mixins.from(md) {
+    display: none;
+  }
+}
+
+.nav {
+  display: none;
+  flex-direction: column;
+  gap: var(--space-md);
+  padding: 0 var(--space-md) var(--space-md);
+
+  &.open {
+    display: flex;
+  }
+
+  @include mixins.from(md) {
+    display: flex !important;
+    flex-direction: row;
+    align-items: center;
+    padding: 0 var(--space-md);
+  }
+}
+
+.navList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  @include mixins.from(md) {
+    flex-direction: row;
+    gap: var(--space-lg);
+  }
+}
