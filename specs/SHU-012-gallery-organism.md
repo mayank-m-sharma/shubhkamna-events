@@ -15,7 +15,9 @@ new visitors can see the quality of my work.
 ## Technical tasks
 
 - `gallerySection` object schema: heading + array of images (Sanity image
-  with hotspot, alt text required per image).
+  with hotspot, alt text required per image, optional caption and category
+  label per image — the reference site's gallery cards carry a title and
+  category tag per image, see [[SHU-000]]'s audit §2.3/§4).
 - `Gallery` organism: responsive grid, lazy-loaded (`next/image`, below-fold),
   accessible lightbox (focus trap, Escape to close, arrow-key navigation,
   returns focus to the trigger on close).

@@ -15,7 +15,9 @@ social proof stays current as new events wrap up.
 ## Technical tasks
 
 - `testimonialsSection` object schema: heading + array of testimonials
-  (quote, author name, optional role/event type, optional photo).
+  (quote, author name, optional role/event type, optional photo, optional
+  star rating — the reference site shows a fixed 5/5 rating per testimonial,
+  see [[SHU-000]]'s audit §2.3).
 - `Testimonials` organism: carousel or static grid (decide based on item
   count), respects `prefers-reduced-motion` (no forced auto-advance
   animation for users who've opted out), keyboard-navigable controls if a
