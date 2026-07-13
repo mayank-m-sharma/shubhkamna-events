@@ -7,6 +7,13 @@
       "runtimeArgs": ["node_modules/next/dist/bin/next", "dev"],
       "port": 3000,
       "autoPort": true
+    },
+    {
+      "name": "start",
+      "runtimeExecutable": "/Users/personal/.nvm/versions/node/v24.18.0/bin/node",
+      "runtimeArgs": ["node_modules/next/dist/bin/next", "start"],
+      "port": 3000,
+      "autoPort": true
     }
   ]
 }

@@ -1,0 +1,26 @@
+// Re-declares the token :root block (normally only loaded via globals.scss
+// in the root layout) so this page still renders on-brand even when the
+// root layout itself is what crashed — global-error replaces the entire
+// document and can't assume anything else in the app tree survived.
+@use "../styles/tokens";
+
+.wrapper {
+  display: flex;
+  min-height: 100dvh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-md);
+  padding: var(--space-xl) var(--space-md);
+  text-align: center;
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-body);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-sm);
+}
