@@ -66,9 +66,26 @@ export const gallerySectionSchema = z.object({
     .nullish()
     .transform((value) => value ?? []),
 });
+export const testimonialItemSchema = z.object({
+  quote: z.string().min(1),
+  author: z.string().min(1),
+  role: optionalNullable(z.string()),
+  // Unused on the reference (initials-avatar fallback only) but modeled
+  // per the ticket, for editors who do have a real client photo.
+  photo: optionalNullable(sanityImageSchema),
+  rating: optionalNullable(z.number().min(1).max(5)),
+});
+
+export type TestimonialItem = z.infer<typeof testimonialItemSchema>;
+
 export const testimonialsSectionSchema = z.object({
   _type: z.literal("testimonialsSection"),
   heading: optionalNullable(z.string()),
+  intro: optionalNullable(z.string()),
+  items: z
+    .array(testimonialItemSchema)
+    .nullish()
+    .transform((value) => value ?? []),
 });
 export const contactSectionSchema = z.object({
   _type: z.literal("contactSection"),

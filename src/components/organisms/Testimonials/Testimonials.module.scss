@@ -1,0 +1,95 @@
+@use "../../../styles/mixins";
+
+.testimonials {
+  @include mixins.container;
+  padding-block: var(--space-2xl);
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-xl);
+  max-width: 60ch;
+}
+
+.intro {
+  color: var(--color-text-muted);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-lg);
+
+  @include mixins.from(sm) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include mixins.from(lg) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  background: var(--color-surface);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+}
+
+.stars {
+  display: flex;
+  gap: 2px;
+  color: var(--color-accent);
+
+  svg {
+    fill: currentColor;
+  }
+}
+
+.quote {
+  margin: 0;
+  color: var(--color-text);
+}
+
+.attribution {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-top: auto;
+}
+
+.avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-full);
+  color: var(--color-background);
+  font-weight: 700;
+}
+
+.primary {
+  background: var(--color-primary);
+}
+
+.accent {
+  background: var(--color-accent);
+}
+
+.avatarImage {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-full);
+  object-fit: cover;
+}
+
+.author {
+  font-weight: 600;
+  margin: 0;
+}

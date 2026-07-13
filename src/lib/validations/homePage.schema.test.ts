@@ -2,6 +2,7 @@ import {
   gallerySectionSchema,
   homePageSchema,
   servicesSectionSchema,
+  testimonialsSectionSchema,
 } from "./homePage.schema";
 
 const validHero = {
@@ -254,5 +255,62 @@ describe("gallerySectionSchema", () => {
 
     expect(parsed.images[0]?.caption).toBeUndefined();
     expect(parsed.images[0]?.category).toBeUndefined();
+  });
+});
+
+describe("testimonialsSectionSchema", () => {
+  it("defaults items to [] when GROQ returns null, so an empty section is valid", () => {
+    const parsed = testimonialsSectionSchema.parse({
+      _type: "testimonialsSection",
+      items: null,
+    });
+
+    expect(parsed.items).toEqual([]);
+  });
+
+  it("accepts a full testimonial matching the SHU-000 audit shape", () => {
+    const parsed = testimonialsSectionSchema.parse({
+      _type: "testimonialsSection",
+      items: [
+        {
+          quote: "They made every event very creative and in budget.",
+          author: "Jyoti Bansal",
+          role: "Wedding Client",
+          rating: 5,
+        },
+      ],
+    });
+
+    expect(parsed.items[0]?.author).toBe("Jyoti Bansal");
+    expect(parsed.items[0]?.rating).toBe(5);
+  });
+
+  it("rejects a testimonial missing its quote or author", () => {
+    const result = testimonialsSectionSchema.safeParse({
+      _type: "testimonialsSection",
+      items: [{ quote: "Great service!" }],
+    });
+
+    expect(result.success).toBe(false);
+  });
+
+  it("rejects a rating outside the 1-5 range", () => {
+    const result = testimonialsSectionSchema.safeParse({
+      _type: "testimonialsSection",
+      items: [{ quote: "Great service!", author: "Jyoti Bansal", rating: 6 }],
+    });
+
+    expect(result.success).toBe(false);
+  });
+
+  it("treats role, photo, and rating as independently optional", () => {
+    const parsed = testimonialsSectionSchema.parse({
+      _type: "testimonialsSection",
+      items: [{ quote: "Great service!", author: "Jyoti Bansal" }],
+    });
+
+    expect(parsed.items[0]?.role).toBeUndefined();
+    expect(parsed.items[0]?.photo).toBeUndefined();
+    expect(parsed.items[0]?.rating).toBeUndefined();
   });
 });

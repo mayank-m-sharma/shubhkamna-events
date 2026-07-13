@@ -117,6 +117,24 @@ describe("buildHomePageSeed", () => {
     expect(gallery.images.every((image) => image.image.asset._ref)).toBe(true);
   });
 
+  it("carries the reference site's real testimonials from the SHU-000 audit", async () => {
+    const seed = await buildHomePageSeed(
+      mockClient("image-hero-800x1000-webp"),
+    );
+    const [, , , testimonials] = seed.sections;
+
+    expect(testimonials.intro).toBe(
+      "We take pride in our 5-star reputation. Here is what people are saying about Shubhkamna Events.",
+    );
+    expect(testimonials.items.map((item) => item.author)).toEqual([
+      "Jyoti Bansal",
+      "Rajesh Khanna",
+      "Sneha Mehta",
+      "Priyanka Verma",
+    ]);
+    expect(testimonials.items.every((item) => item.rating === 5)).toBe(true);
+  });
+
   it("carries the reference site's real headings for the remaining sections", async () => {
     const seed = await buildHomePageSeed(
       mockClient("image-hero-800x1000-webp"),
