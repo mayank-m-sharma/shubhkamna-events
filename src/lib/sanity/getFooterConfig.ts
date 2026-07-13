@@ -9,9 +9,15 @@ import {
 import type { FooterConfig } from "@/types/footerConfig";
 
 // Wrapped in React's `cache()` so layout + page can both call this during the
-// same request without issuing the GROQ query to Sanity twice.
+// same request without issuing the GROQ query to Sanity twice. Tagged
+// "footerConfig" so the revalidate route (SHU-015) can target just this
+// document on publish.
 export const getFooterConfig = cache(async (): Promise<FooterConfig> => {
-  const raw: unknown = await sanityClient.fetch(footerConfigQuery);
+  const raw: unknown = await sanityClient.fetch(
+    footerConfigQuery,
+    {},
+    { next: { tags: ["footerConfig"] } },
+  );
   const parsed = footerConfigSchema.safeParse(raw);
 
   return parsed.success ? parsed.data : fallbackFooterConfig;

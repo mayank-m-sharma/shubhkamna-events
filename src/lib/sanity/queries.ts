@@ -83,3 +83,59 @@ export const siteThemeQuery = `*[_type == "siteTheme"][0]{
   spaceXl,
   space2xl
 }`;
+
+// Each section's fields are merged in only when `_type` matches — GROQ's
+// conditional-projection syntax — so a single query covers every section
+// type in the discriminated union without a chain of separate queries.
+export const homePageQuery = `*[_type == "homePage"][0]{
+  sections[]{
+    _type,
+    _type == "heroSection" => {
+      headline,
+      subhead,
+      backgroundImage ${imageProjection},
+      backgroundImageAlt,
+      backgroundVideoUrl,
+      primaryCtaLabel,
+      primaryCtaHref,
+      secondaryCtaLabel,
+      secondaryCtaHref
+    },
+    _type == "servicesSection" => {
+      heading,
+      intro,
+      viewAllLabel,
+      viewAllHref,
+      items[]{ icon, title, description, href }
+    },
+    _type == "gallerySection" => {
+      heading,
+      intro,
+      viewAllLabel,
+      viewAllHref,
+      images[]{
+        image ${imageProjection},
+        alt,
+        caption,
+        category
+      }
+    },
+    _type == "testimonialsSection" => {
+      heading,
+      intro,
+      items[]{
+        quote,
+        author,
+        role,
+        photo ${imageProjection},
+        rating
+      }
+    },
+    _type == "contactSection" => {
+      variant,
+      heading,
+      intro,
+      successMessage
+    }
+  }
+}`;

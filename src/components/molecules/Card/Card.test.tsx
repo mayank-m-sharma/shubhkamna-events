@@ -16,6 +16,7 @@ const mockImage = {
     url: "https://cdn.sanity.io/images/proj/ds/abc-800x600.jpg",
     metadata: { dimensions: { width: 800, height: 600 } },
   },
+  hotspot: undefined,
 };
 
 describe("Card", () => {

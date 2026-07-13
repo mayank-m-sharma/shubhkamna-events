@@ -10,8 +10,14 @@ import type { SiteTheme } from "@/types/theme";
 
 // Wrapped in React's `cache()` so every caller in the same request (layout,
 // ThemeProvider) shares one GROQ query instead of issuing it per caller.
+// Tagged "siteTheme" so the revalidate route (SHU-015) can target just this
+// document on publish.
 export const getSiteTheme = cache(async (): Promise<SiteTheme> => {
-  const raw: unknown = await sanityClient.fetch(siteThemeQuery);
+  const raw: unknown = await sanityClient.fetch(
+    siteThemeQuery,
+    {},
+    { next: { tags: ["siteTheme"] } },
+  );
   const parsed = siteThemeSchema.safeParse(raw);
 
   return parsed.success ? parsed.data : fallbackSiteTheme;
