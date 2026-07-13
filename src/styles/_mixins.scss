@@ -32,3 +32,13 @@ $breakpoints: (
   white-space: nowrap;
   border: 0;
 }
+
+// Site-wide content width cap, matching the reference site's dominant
+// `max-w-7xl mx-auto` container pattern (docs/reference-site-audit.md §3) —
+// use for any full-bleed section's inner content (header, footer, page
+// sections), so nothing sprawls edge-to-edge on wide viewports.
+@mixin container {
+  max-width: 1280px;
+  margin-inline: auto;
+  padding-inline: var(--space-md);
+}
