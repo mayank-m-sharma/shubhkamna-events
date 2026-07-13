@@ -1,6 +1,6 @@
 import type { SanityClient } from "@sanity/client";
 
-interface SanityImageRef {
+export interface SanityImageRef {
   _type: "image";
   asset: { _type: "reference"; _ref: string };
 }
