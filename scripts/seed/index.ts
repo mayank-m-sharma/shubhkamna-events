@@ -1,3 +1,4 @@
+import { footerConfigSeed } from "./data/footerConfig";
 import { headerConfigSeed } from "./data/headerConfig";
 import { siteSettingsSeed } from "./data/siteSettings";
 import { siteThemeSeed } from "./data/siteTheme";
@@ -25,6 +26,13 @@ async function main(): Promise<void> {
     ...headerConfigSeed,
   });
   console.warn(`headerConfig: ${headerResult}`);
+
+  const footerResult = await upsertDocument(sanityWriteClient, {
+    _id: "footerConfig",
+    _type: "footerConfig",
+    ...footerConfigSeed,
+  });
+  console.warn(`footerConfig: ${footerResult}`);
 }
 
 main().catch((error: unknown) => {

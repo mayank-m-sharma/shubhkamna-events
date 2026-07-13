@@ -40,6 +40,24 @@ export const headerConfigQuery = `*[_type == "headerConfig"][0]{
   ctaHref
 }`;
 
+export const footerConfigQuery = `*[_type == "footerConfig"][0]{
+  columns[]{
+    title,
+    links[]{
+      label,
+      href
+    }
+  },
+  contactPhone,
+  contactEmail,
+  contactAddress,
+  socialLinks[]{
+    platform,
+    url
+  },
+  copyrightText
+}`;
+
 export const siteThemeQuery = `*[_type == "siteTheme"][0]{
   colorPrimary,
   colorSecondary,

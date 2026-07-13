@@ -1,5 +1,7 @@
 import { defineField, defineType } from "sanity";
 
+import { socialLinksField } from "./fields/socialLinksField";
+
 export const siteSettings = defineType({
   name: "siteSettings",
   title: "Site Settings",
@@ -87,52 +89,15 @@ export const siteSettings = defineType({
       group: "branding",
       options: { hotspot: true },
     }),
-    defineField({
-      name: "socialLinks",
-      title: "Social links",
-      type: "array",
-      group: "branding",
-      of: [
-        defineField({
-          name: "socialLink",
-          title: "Social link",
-          type: "object",
-          fields: [
-            defineField({
-              name: "platform",
-              title: "Platform",
-              type: "string",
-              options: {
-                list: [
-                  { title: "Instagram", value: "instagram" },
-                  { title: "Facebook", value: "facebook" },
-                  { title: "Twitter / X", value: "twitter" },
-                  { title: "LinkedIn", value: "linkedin" },
-                  { title: "YouTube", value: "youtube" },
-                ],
-              },
-              validation: (rule) => rule.required(),
-            }),
-            defineField({
-              name: "url",
-              title: "URL",
-              type: "url",
-              validation: (rule) =>
-                rule.required().uri({ scheme: ["http", "https"] }),
-            }),
-          ],
-          preview: {
-            select: { title: "platform", subtitle: "url" },
-          },
-        }),
-      ],
+    {
+      ...socialLinksField("branding"),
       initialValue: [
         {
           platform: "instagram",
           url: "https://www.instagram.com/shubhkamnaevents02/",
         },
       ],
-    }),
+    },
     defineField({
       name: "organizationLegalName",
       title: "Legal / registered name",
