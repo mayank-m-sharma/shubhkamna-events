@@ -18,6 +18,7 @@ const mockImage = {
     url: "https://cdn.sanity.io/images/proj/ds/abc-800x1000.jpg",
     metadata: { dimensions: { width: 800, height: 1000 } },
   },
+  hotspot: undefined,
 };
 
 const baseProps = {

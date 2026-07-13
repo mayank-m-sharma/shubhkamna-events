@@ -17,6 +17,7 @@ function mockImage(id: string): {
     url: string;
     metadata: { dimensions: { width: number; height: number } };
   };
+  hotspot: undefined;
 } {
   return {
     asset: {
@@ -24,6 +25,7 @@ function mockImage(id: string): {
       url: `https://cdn.sanity.io/images/proj/ds/${id}.webp`,
       metadata: { dimensions: { width: 800, height: 600 } },
     },
+    hotspot: undefined,
   };
 }
 

@@ -48,7 +48,7 @@ test suite on every commit; commits are rejected if any of those fail.
    domain once you have one) under API → CORS Origins, with credentials
    allowed.
 2. **Vercel**: create a new Vercel project linked to this GitHub repo, and add
-   the same 4 variables from `.env.local.example` under Project Settings →
+   the same variables from `.env.local.example` under Project Settings →
    Environment Variables (both Production and Preview).
 3. Sign in to `/studio` with your Sanity account and publish one "Site
    Settings" document — the coming-soon page falls back to placeholder copy
@@ -64,6 +64,13 @@ test suite on every commit; commits are rejected if any of those fail.
    settings, either switch the dataset to private, or add a role-based
    restriction scoped to the `enquiry` type, before real enquiries start
    coming in.
+5. **Sanity webhook for ISR** (SHU-015): in the
+   [Sanity manage console](https://www.sanity.io/manage) → API → Webhooks,
+   add a webhook pointing at `https://<your-domain>/api/revalidate`,
+   triggered on Create/Update/Delete for every document type, with the
+   same secret as `SANITY_REVALIDATE_SECRET`. Without this, published
+   changes only appear after Vercel's own build cache naturally expires,
+   not within moments of publishing.
 
 ## Project structure
 

@@ -26,6 +26,12 @@ describe("sanityImageSchema", () => {
     expect(result.success).toBe(true);
   });
 
+  it("normalizes GROQ's null hotspot to undefined, not a validation error", () => {
+    const parsed = sanityImageSchema.parse({ ...validImage, hotspot: null });
+
+    expect(parsed.hotspot).toBeUndefined();
+  });
+
   it("rejects an asset missing dimensions", () => {
     const result = sanityImageSchema.safeParse({
       asset: { _id: "image-abc123-jpg", url: "https://cdn.sanity.io/x.jpg" },
