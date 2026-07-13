@@ -97,6 +97,26 @@ describe("buildHomePageSeed", () => {
     ]);
   });
 
+  it("carries the reference site's real gallery images from the SHU-000 audit", async () => {
+    const seed = await buildHomePageSeed(
+      mockClient("image-hero-800x1000-webp"),
+    );
+    const [, , gallery] = seed.sections;
+
+    expect(gallery.intro).toBe(
+      "Take a look at the stunning events we have brought to life across Indore.",
+    );
+    expect(gallery.viewAllLabel).toBe("See More Projects");
+    expect(gallery.images.map((image) => image.alt)).toEqual([
+      "Shubhkamna Events wedding decor",
+      "Shubhkamna Events corporate event",
+      "Shubhkamna Events birthday party",
+      "Shubhkamna Events event decor",
+      "Shubhkamna Events luxury planning",
+    ]);
+    expect(gallery.images.every((image) => image.image.asset._ref)).toBe(true);
+  });
+
   it("carries the reference site's real headings for the remaining sections", async () => {
     const seed = await buildHomePageSeed(
       mockClient("image-hero-800x1000-webp"),

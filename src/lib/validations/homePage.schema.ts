@@ -43,9 +43,28 @@ export const servicesSectionSchema = z.object({
     .nullish()
     .transform((value) => value ?? []),
 });
+export const galleryImageSchema = z.object({
+  image: sanityImageSchema,
+  // Required, not optional — every gallery image needs editor-supplied alt
+  // text, enforced here rather than left to lint (SHU-012's acceptance
+  // criteria).
+  alt: z.string().min(1),
+  caption: optionalNullable(z.string()),
+  category: optionalNullable(z.string()),
+});
+
+export type GalleryImage = z.infer<typeof galleryImageSchema>;
+
 export const gallerySectionSchema = z.object({
   _type: z.literal("gallerySection"),
   heading: optionalNullable(z.string()),
+  intro: optionalNullable(z.string()),
+  viewAllLabel: optionalNullable(z.string()),
+  viewAllHref: optionalNullable(z.string()),
+  images: z
+    .array(galleryImageSchema)
+    .nullish()
+    .transform((value) => value ?? []),
 });
 export const testimonialsSectionSchema = z.object({
   _type: z.literal("testimonialsSection"),
