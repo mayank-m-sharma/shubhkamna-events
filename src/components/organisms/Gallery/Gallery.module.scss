@@ -1,0 +1,72 @@
+@use "../../../styles/mixins";
+
+.gallery {
+  @include mixins.container;
+  padding-block: var(--space-2xl);
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+
+  @include mixins.from(md) {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+}
+
+.intro {
+  color: var(--color-text-muted);
+  max-width: 60ch;
+  margin-top: var(--space-sm);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-lg);
+
+  @include mixins.from(sm) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include mixins.from(lg) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  background: transparent;
+  border: none;
+  padding: 0;
+  text-align: left;
+  cursor: pointer;
+  transition: transform var(--transition-base);
+
+  &:hover {
+    transform: translateY(-4px);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-md);
+}
+
+.caption {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}

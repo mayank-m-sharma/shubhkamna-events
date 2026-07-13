@@ -1,4 +1,8 @@
-import { homePageSchema, servicesSectionSchema } from "./homePage.schema";
+import {
+  gallerySectionSchema,
+  homePageSchema,
+  servicesSectionSchema,
+} from "./homePage.schema";
 
 const validHero = {
   _type: "heroSection" as const,
@@ -195,5 +199,60 @@ describe("servicesSectionSchema", () => {
     });
 
     expect(parsed.items[0]?.href).toBeUndefined();
+  });
+});
+
+const mockSanityImage = {
+  asset: {
+    _id: "image-abc-800x600-webp",
+    url: "https://cdn.sanity.io/images/proj/ds/abc-800x600.webp",
+    metadata: { dimensions: { width: 800, height: 600 } },
+  },
+};
+
+describe("gallerySectionSchema", () => {
+  it("defaults images to [] when GROQ returns null, so an empty section is valid", () => {
+    const parsed = gallerySectionSchema.parse({
+      _type: "gallerySection",
+      images: null,
+    });
+
+    expect(parsed.images).toEqual([]);
+  });
+
+  it("accepts a full image entry matching the SHU-000 audit shape", () => {
+    const parsed = gallerySectionSchema.parse({
+      _type: "gallerySection",
+      images: [
+        {
+          image: mockSanityImage,
+          alt: "Shubhkamna Events wedding decor",
+          caption: "Grand Wedding Decor",
+          category: "Wedding & Engagement",
+        },
+      ],
+    });
+
+    expect(parsed.images[0]?.alt).toBe("Shubhkamna Events wedding decor");
+    expect(parsed.images[0]?.caption).toBe("Grand Wedding Decor");
+  });
+
+  it("rejects an image with no alt text", () => {
+    const result = gallerySectionSchema.safeParse({
+      _type: "gallerySection",
+      images: [{ image: mockSanityImage }],
+    });
+
+    expect(result.success).toBe(false);
+  });
+
+  it("treats caption and category as independently optional", () => {
+    const parsed = gallerySectionSchema.parse({
+      _type: "gallerySection",
+      images: [{ image: mockSanityImage, alt: "Wedding decor" }],
+    });
+
+    expect(parsed.images[0]?.caption).toBeUndefined();
+    expect(parsed.images[0]?.category).toBeUndefined();
   });
 });
