@@ -37,48 +37,50 @@ export function Header({
 
   return (
     <header className={styles.header}>
-      <div className={styles.bar}>
-        <Link href="/" className={styles.logoLink}>
-          {logo ? (
-            <Image image={logo} alt={siteName} sizes="160px" />
-          ) : (
-            <>
-              <Icon name="logo" size="lg" className={styles.logoIcon} />
-              <span className={styles.siteName}>{siteName}</span>
-            </>
-          )}
-        </Link>
-        <button
-          ref={toggleButtonRef}
-          type="button"
-          className={styles.menuToggle}
-          aria-expanded={isMobileNavOpen}
-          aria-controls={NAV_ID}
-          aria-label={isMobileNavOpen ? "Close menu" : "Open menu"}
-          onClick={toggleMobileNav}
+      <div className={styles.inner}>
+        <div className={styles.bar}>
+          <Link href="/" className={styles.logoLink}>
+            {logo ? (
+              <Image image={logo} alt={siteName} sizes="160px" />
+            ) : (
+              <>
+                <Icon name="logo" size="lg" className={styles.logoIcon} />
+                <span className={styles.siteName}>{siteName}</span>
+              </>
+            )}
+          </Link>
+          <button
+            ref={toggleButtonRef}
+            type="button"
+            className={styles.menuToggle}
+            aria-expanded={isMobileNavOpen}
+            aria-controls={NAV_ID}
+            aria-label={isMobileNavOpen ? "Close menu" : "Open menu"}
+            onClick={toggleMobileNav}
+          >
+            <Icon name={isMobileNavOpen ? "close" : "menu"} />
+          </button>
+        </div>
+        <nav
+          id={NAV_ID}
+          ref={navRef}
+          aria-label="Primary"
+          className={cn(styles.nav, isMobileNavOpen && styles.open)}
         >
-          <Icon name={isMobileNavOpen ? "close" : "menu"} />
-        </button>
+          <ul className={styles.navList}>
+            {navItems.map((item) => (
+              <li key={item.href}>
+                <NavLink href={item.href}>{item.label}</NavLink>
+              </li>
+            ))}
+          </ul>
+          {ctaLabel && ctaHref ? (
+            <Button href={ctaHref} variant="primary">
+              {ctaLabel}
+            </Button>
+          ) : null}
+        </nav>
       </div>
-      <nav
-        id={NAV_ID}
-        ref={navRef}
-        aria-label="Primary"
-        className={cn(styles.nav, isMobileNavOpen && styles.open)}
-      >
-        <ul className={styles.navList}>
-          {navItems.map((item) => (
-            <li key={item.href}>
-              <NavLink href={item.href}>{item.label}</NavLink>
-            </li>
-          ))}
-        </ul>
-        {ctaLabel && ctaHref ? (
-          <Button href={ctaHref} variant="primary">
-            {ctaLabel}
-          </Button>
-        ) : null}
-      </nav>
     </header>
   );
 }
