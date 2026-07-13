@@ -1,6 +1,6 @@
 import { footerConfigSeed } from "./data/footerConfig";
 import { headerConfigSeed } from "./data/headerConfig";
-import { homePageSeed } from "./data/homePage";
+import { buildHomePageSeed } from "./data/homePage";
 import { siteSettingsSeed } from "./data/siteSettings";
 import { siteThemeSeed } from "./data/siteTheme";
 import { sanityWriteClient } from "./sanityWriteClient";
@@ -35,6 +35,7 @@ async function main(): Promise<void> {
   });
   console.warn(`footerConfig: ${footerResult}`);
 
+  const homePageSeed = await buildHomePageSeed(sanityWriteClient);
   const homePageResult = await upsertDocument(sanityWriteClient, {
     _id: "homePage",
     _type: "homePage",

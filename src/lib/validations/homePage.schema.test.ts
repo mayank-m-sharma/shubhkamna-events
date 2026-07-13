@@ -1,10 +1,17 @@
-import { homePageSchema } from "./homePage.schema";
+import { homePageSchema, servicesSectionSchema } from "./homePage.schema";
+
+const validHero = {
+  _type: "heroSection" as const,
+  headline: "Your Vision, Our Magic.",
+  primaryCtaLabel: "Plan Your Event",
+  primaryCtaHref: "/contact",
+};
 
 describe("homePageSchema", () => {
   it("accepts a document with all five section types in order", () => {
     const result = homePageSchema.safeParse({
       sections: [
-        { _type: "heroSection" },
+        validHero,
         { _type: "servicesSection" },
         { _type: "gallerySection" },
         { _type: "testimonialsSection" },
@@ -16,9 +23,7 @@ describe("homePageSchema", () => {
   });
 
   it("accepts a single section", () => {
-    const result = homePageSchema.safeParse({
-      sections: [{ _type: "heroSection" }],
-    });
+    const result = homePageSchema.safeParse({ sections: [validHero] });
 
     expect(result.success).toBe(true);
   });
@@ -51,19 +56,83 @@ describe("homePageSchema", () => {
     expect(result.success).toBe(true);
   });
 
-  it("accepts a section's heading text", () => {
-    const parsed = homePageSchema.parse({
-      sections: [{ _type: "heroSection", heading: "Your Vision, Our Magic." }],
+  it("accepts a stub section's heading text", () => {
+    const parsed = servicesSectionSchema.parse({
+      _type: "servicesSection",
+      heading: "What We Do Best",
     });
 
-    expect(parsed.sections[0]?.heading).toBe("Your Vision, Our Magic.");
+    expect(parsed.heading).toBe("What We Do Best");
   });
 
-  it("treats a section's heading as optional, normalizing GROQ's null to undefined", () => {
-    const parsed = homePageSchema.parse({
-      sections: [{ _type: "heroSection", heading: null }],
+  it("treats a stub section's heading as optional, normalizing GROQ's null to undefined", () => {
+    const parsed = servicesSectionSchema.parse({
+      _type: "servicesSection",
+      heading: null,
     });
 
-    expect(parsed.sections[0]?.heading).toBeUndefined();
+    expect(parsed.heading).toBeUndefined();
+  });
+});
+
+describe("heroSectionSchema (via homePageSchema)", () => {
+  it("rejects a hero section with no headline", () => {
+    const result = homePageSchema.safeParse({
+      sections: [{ ...validHero, headline: undefined }],
+    });
+
+    expect(result.success).toBe(false);
+  });
+
+  it("rejects a hero section missing its primary CTA", () => {
+    const result = homePageSchema.safeParse({
+      sections: [{ ...validHero, primaryCtaHref: undefined }],
+    });
+
+    expect(result.success).toBe(false);
+  });
+
+  it("accepts a hero section with subhead, background image, and a secondary CTA", () => {
+    const parsed = homePageSchema.parse({
+      sections: [
+        {
+          ...validHero,
+          subhead: "Indore's 5-star premier event planner.",
+          backgroundImage: {
+            asset: {
+              _id: "image-abc-800x1000-webp",
+              url: "https://cdn.sanity.io/images/proj/ds/abc-800x1000.webp",
+              metadata: { dimensions: { width: 800, height: 1000 } },
+            },
+          },
+          backgroundImageAlt:
+            "Shubhkamna Events luxury wedding planning Indore",
+          secondaryCtaLabel: "View Portfolio",
+          secondaryCtaHref: "/gallery",
+        },
+      ],
+    });
+
+    const hero = parsed.sections[0];
+    expect(hero?._type === "heroSection" && hero.subhead).toBe(
+      "Indore's 5-star premier event planner.",
+    );
+    expect(hero?._type === "heroSection" && hero.secondaryCtaLabel).toBe(
+      "View Portfolio",
+    );
+  });
+
+  it("treats subhead, background media, and secondary CTA as independently optional", () => {
+    const result = homePageSchema.safeParse({ sections: [validHero] });
+
+    expect(result.success).toBe(true);
+  });
+
+  it("rejects a malformed background video URL", () => {
+    const result = homePageSchema.safeParse({
+      sections: [{ ...validHero, backgroundVideoUrl: "not-a-url" }],
+    });
+
+    expect(result.success).toBe(false);
   });
 });
