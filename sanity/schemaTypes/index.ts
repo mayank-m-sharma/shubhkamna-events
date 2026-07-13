@@ -2,9 +2,26 @@ import type { SchemaTypeDefinition } from "sanity";
 
 import { footerConfig } from "./footerConfig";
 import { headerConfig } from "./headerConfig";
+import { homePage } from "./homePage";
+import { contactSection } from "./sections/contactSection";
+import { gallerySection } from "./sections/gallerySection";
+import { heroSection } from "./sections/heroSection";
+import { servicesSection } from "./sections/servicesSection";
+import { testimonialsSection } from "./sections/testimonialsSection";
 import { siteSettings } from "./siteSettings";
 import { siteTheme } from "./siteTheme";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [siteSettings, siteTheme, headerConfig, footerConfig],
+  types: [
+    siteSettings,
+    siteTheme,
+    headerConfig,
+    footerConfig,
+    homePage,
+    heroSection,
+    servicesSection,
+    gallerySection,
+    testimonialsSection,
+    contactSection,
+  ],
 };
