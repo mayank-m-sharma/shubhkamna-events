@@ -1,0 +1,50 @@
+import { z } from "zod";
+
+import { optionalNullable } from "@/lib/validations/zodHelpers";
+
+// `heading` is the one field every homepage section shares (SHU-000's
+// audit) and is required for the Sanity object type to be valid. The rest
+// of each section's content fields are added by its own ticket (SHU-010
+// through SHU-014) — `_type` discriminates which organism the renderer
+// (SHU-015) will mount.
+export const heroSectionSchema = z.object({
+  _type: z.literal("heroSection"),
+  heading: optionalNullable(z.string()),
+});
+export const servicesSectionSchema = z.object({
+  _type: z.literal("servicesSection"),
+  heading: optionalNullable(z.string()),
+});
+export const gallerySectionSchema = z.object({
+  _type: z.literal("gallerySection"),
+  heading: optionalNullable(z.string()),
+});
+export const testimonialsSectionSchema = z.object({
+  _type: z.literal("testimonialsSection"),
+  heading: optionalNullable(z.string()),
+});
+export const contactSectionSchema = z.object({
+  _type: z.literal("contactSection"),
+  heading: optionalNullable(z.string()),
+});
+
+export const homePageSectionSchema = z.discriminatedUnion("_type", [
+  heroSectionSchema,
+  servicesSectionSchema,
+  gallerySectionSchema,
+  testimonialsSectionSchema,
+  contactSectionSchema,
+]);
+
+export type HeroSection = z.infer<typeof heroSectionSchema>;
+export type ServicesSection = z.infer<typeof servicesSectionSchema>;
+export type GallerySection = z.infer<typeof gallerySectionSchema>;
+export type TestimonialsSection = z.infer<typeof testimonialsSectionSchema>;
+export type ContactSection = z.infer<typeof contactSectionSchema>;
+export type HomePageSection = z.infer<typeof homePageSectionSchema>;
+
+export const homePageSchema = z.object({
+  sections: z.array(homePageSectionSchema).min(1),
+});
+
+export type HomePage = z.infer<typeof homePageSchema>;
