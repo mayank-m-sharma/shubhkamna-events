@@ -30,6 +30,50 @@ describe("FormField", () => {
     expect(field.tagName).toBe("TEXTAREA");
   });
 
+  it("renders a select with a disabled placeholder option and the given options", () => {
+    render(
+      <FormField
+        as="select"
+        label="Event Type"
+        name="eventType"
+        value=""
+        onChange={jest.fn()}
+        placeholder="Select an option"
+        options={[
+          { label: "Wedding", value: "wedding" },
+          { label: "Corporate Event", value: "corporate" },
+        ]}
+      />,
+    );
+
+    const field = screen.getByRole("combobox", { name: "Event Type" });
+    expect(field.tagName).toBe("SELECT");
+    expect(
+      screen.getByRole("option", { name: "Select an option" }),
+    ).toBeDisabled();
+    expect(
+      screen.getByRole("option", { name: "Corporate Event" }),
+    ).toBeInTheDocument();
+  });
+
+  it("defaults an uncontrolled select to the disabled placeholder, not the first real option", () => {
+    render(
+      <FormField
+        as="select"
+        label="Event Type"
+        name="eventType"
+        options={[
+          { label: "Wedding", value: "Wedding" },
+          { label: "Corporate Event", value: "Corporate Event" },
+        ]}
+      />,
+    );
+
+    expect(screen.getByRole("combobox", { name: "Event Type" })).toHaveValue(
+      "",
+    );
+  });
+
   it("calls onChange with the typed value", async () => {
     const user = userEvent.setup();
     const onChange = jest.fn();

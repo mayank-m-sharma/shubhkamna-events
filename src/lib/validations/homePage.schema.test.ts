@@ -1,4 +1,5 @@
 import {
+  contactSectionSchema,
   gallerySectionSchema,
   homePageSchema,
   servicesSectionSchema,
@@ -20,7 +21,7 @@ describe("homePageSchema", () => {
         { _type: "servicesSection" },
         { _type: "gallerySection" },
         { _type: "testimonialsSection" },
-        { _type: "contactSection" },
+        { _type: "contactSection", variant: "banner" },
       ],
     });
 
@@ -312,5 +313,60 @@ describe("testimonialsSectionSchema", () => {
     expect(parsed.items[0]?.role).toBeUndefined();
     expect(parsed.items[0]?.photo).toBeUndefined();
     expect(parsed.items[0]?.rating).toBeUndefined();
+  });
+});
+
+describe("contactSectionSchema", () => {
+  it("accepts the homepage banner variant with heading and intro", () => {
+    const parsed = contactSectionSchema.parse({
+      _type: "contactSection",
+      variant: "banner",
+      heading: "Ready to Create Magical Moments?",
+      intro: "Contact the 5-star experts at Shubhkamna Events today.",
+    });
+
+    expect(parsed.variant).toBe("banner");
+    expect(parsed.heading).toBe("Ready to Create Magical Moments?");
+  });
+
+  it("accepts the full-form variant with a success message", () => {
+    const parsed = contactSectionSchema.parse({
+      _type: "contactSection",
+      variant: "form",
+      successMessage: "Thanks! We'll be in touch within 24 hours.",
+    });
+
+    expect(parsed.variant).toBe("form");
+    expect(parsed.successMessage).toBe(
+      "Thanks! We'll be in touch within 24 hours.",
+    );
+  });
+
+  it("rejects a variant outside banner/form", () => {
+    const result = contactSectionSchema.safeParse({
+      _type: "contactSection",
+      variant: "carousel",
+    });
+
+    expect(result.success).toBe(false);
+  });
+
+  it("rejects a section with no variant", () => {
+    const result = contactSectionSchema.safeParse({
+      _type: "contactSection",
+    });
+
+    expect(result.success).toBe(false);
+  });
+
+  it("treats heading, intro, and successMessage as independently optional", () => {
+    const parsed = contactSectionSchema.parse({
+      _type: "contactSection",
+      variant: "banner",
+    });
+
+    expect(parsed.heading).toBeUndefined();
+    expect(parsed.intro).toBeUndefined();
+    expect(parsed.successMessage).toBeUndefined();
   });
 });

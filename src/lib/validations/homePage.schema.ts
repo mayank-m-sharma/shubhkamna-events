@@ -87,9 +87,19 @@ export const testimonialsSectionSchema = z.object({
     .nullish()
     .transform((value) => value ?? []),
 });
+// On the reference site this section renders as a lighter phone/WhatsApp
+// CTA banner when placed on the homepage, with the full enquiry form
+// reserved for the dedicated Contact page (SHU-000's audit §2.3/§4) — one
+// schema/organism pair supports both via `variant`, rather than two
+// divergent object types.
 export const contactSectionSchema = z.object({
   _type: z.literal("contactSection"),
+  variant: z.enum(["banner", "form"]),
   heading: optionalNullable(z.string()),
+  intro: optionalNullable(z.string()),
+  // Shown after a successful form submission — only meaningful for the
+  // "form" variant, irrelevant for "banner".
+  successMessage: optionalNullable(z.string()),
 });
 
 export const homePageSectionSchema = z.discriminatedUnion("_type", [

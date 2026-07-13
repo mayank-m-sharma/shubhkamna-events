@@ -135,6 +135,18 @@ describe("buildHomePageSeed", () => {
     expect(testimonials.items.every((item) => item.rating === 5)).toBe(true);
   });
 
+  it("carries the reference site's real contact banner content from the SHU-000 audit", async () => {
+    const seed = await buildHomePageSeed(
+      mockClient("image-hero-800x1000-webp"),
+    );
+    const [, , , , contact] = seed.sections;
+
+    expect(contact.variant).toBe("banner");
+    expect(contact.intro).toBe(
+      "Contact the 5-star experts at Shubhkamna Events today. We are open 24/7 to help you plan your next big event in Indore.",
+    );
+  });
+
   it("carries the reference site's real headings for the remaining sections", async () => {
     const seed = await buildHomePageSeed(
       mockClient("image-hero-800x1000-webp"),
