@@ -51,9 +51,6 @@ export default async function RootLayout({
   return (
     <html lang="en" className={getFontClassName()}>
       <body>
-        <a href="#main-content" className="skip-link">
-          Skip to content
-        </a>
         <JsonLd
           data={buildOrganizationJsonLd({
             name: siteSettings.siteName,
@@ -67,9 +64,7 @@ export default async function RootLayout({
             sameAs: siteSettings.socialLinks.map((link) => link.url),
           })}
         />
-        <ThemeProvider>
-          <main id="main-content">{children}</main>
-        </ThemeProvider>
+        <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
   );

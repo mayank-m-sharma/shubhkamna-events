@@ -27,7 +27,7 @@ export function Footer({
             <h3 className={styles.columnTitle}>{column.title}</h3>
             <ul className={styles.linkList}>
               {column.links.map((link) => (
-                <li key={link.href}>
+                <li key={link.label}>
                   <Link href={link.href}>{link.label}</Link>
                 </li>
               ))}
