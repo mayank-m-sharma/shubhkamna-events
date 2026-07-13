@@ -4,13 +4,25 @@
   justify-content: center;
   gap: var(--space-xs);
   padding: var(--space-sm) var(--space-lg);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-full);
   border: 1px solid transparent;
   font-family: var(--font-body);
   font-size: var(--font-size-base);
   font-weight: 600;
   cursor: pointer;
   text-decoration: none;
+  transition:
+    filter var(--transition-fast),
+    background-color var(--transition-fast);
+
+  &:hover:not(:disabled) {
+    filter: brightness(0.92);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
 
   &:disabled {
     cursor: not-allowed;
@@ -32,4 +44,9 @@
   background: transparent;
   color: var(--color-primary);
   border-color: var(--color-primary);
+
+  &:hover:not(:disabled) {
+    filter: none;
+    background: var(--color-surface);
+  }
 }

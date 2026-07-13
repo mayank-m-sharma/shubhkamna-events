@@ -16,6 +16,12 @@
 .logoLink {
   display: inline-flex;
   align-items: center;
+  gap: var(--space-xs);
+}
+
+.logoIcon {
+  color: var(--color-primary);
+  flex-shrink: 0;
 }
 
 .siteName {

@@ -42,7 +42,10 @@ export function Header({
           {logo ? (
             <Image image={logo} alt={siteName} sizes="160px" />
           ) : (
-            <span className={styles.siteName}>{siteName}</span>
+            <>
+              <Icon name="logo" size="lg" className={styles.logoIcon} />
+              <span className={styles.siteName}>{siteName}</span>
+            </>
           )}
         </Link>
         <button

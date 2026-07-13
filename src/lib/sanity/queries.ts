@@ -65,6 +65,8 @@ export const siteThemeQuery = `*[_type == "siteTheme"][0]{
   colorBackground,
   colorSurface,
   colorText,
+  colorBackgroundDark,
+  colorTextInverse,
   headingFont,
   bodyFont,
   fontSizeXs,

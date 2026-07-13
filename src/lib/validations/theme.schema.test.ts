@@ -7,6 +7,8 @@ const validTheme = {
   colorBackground: "#f6f6f8",
   colorSurface: "#ffffff",
   colorText: "#0f172a",
+  colorBackgroundDark: "#121320",
+  colorTextInverse: "#f1f5f9",
   headingFont: "montserrat",
   bodyFont: "inter",
   fontSizeXs: "0.75rem",

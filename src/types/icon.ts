@@ -9,7 +9,10 @@ export type IconName =
   | "facebook"
   | "twitter"
   | "linkedin"
-  | "youtube";
+  | "youtube"
+  | "phone"
+  | "location"
+  | "logo";
 
 export type IconSize = "sm" | "md" | "lg";
 

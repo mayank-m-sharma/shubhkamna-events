@@ -16,6 +16,12 @@ describe("buildThemeStyle", () => {
     );
     expect(css).toContain(`--color-surface:${fallbackSiteTheme.colorSurface};`);
     expect(css).toContain(`--color-text:${fallbackSiteTheme.colorText};`);
+    expect(css).toContain(
+      `--color-background-dark:${fallbackSiteTheme.colorBackgroundDark};`,
+    );
+    expect(css).toContain(
+      `--color-text-inverse:${fallbackSiteTheme.colorTextInverse};`,
+    );
   });
 
   it("points the font-fallback custom properties at the system stack when headingFont/bodyFont is 'system'", () => {

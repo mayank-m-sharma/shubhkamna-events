@@ -37,4 +37,22 @@ describe("NavLink", () => {
       "aria-current",
     );
   });
+
+  it("applies a distinct visual style when it is the current page", () => {
+    mockUsePathname.mockReturnValue("/services");
+    render(<NavLink href="/services">Services</NavLink>);
+
+    expect(screen.getByRole("link", { name: "Services" })).toHaveClass(
+      "active",
+    );
+  });
+
+  it("does not apply the active style when it is not the current page", () => {
+    mockUsePathname.mockReturnValue("/about");
+    render(<NavLink href="/services">Services</NavLink>);
+
+    expect(screen.getByRole("link", { name: "Services" })).not.toHaveClass(
+      "active",
+    );
+  });
 });

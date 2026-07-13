@@ -37,6 +37,31 @@ For the _how_, not just the _what_, see the topic-specific guides in
 - New organisms/pages ship with a `jest-axe` check (tooling set up in
   [[SHU-001]]) asserting zero violations.
 
+## Visual & Interaction Design
+
+Added after [[SHU-006]]/[[SHU-007]] shipped with default browser underlines
+and no hover states — automated checks (lint/tests/axe) don't catch "looks
+unfinished," so this section makes that an explicit, standing gate instead
+of something caught ad hoc in review.
+
+- Every interactive element (link, button, nav item, card, form control)
+  has a deliberate hover **and** focus-visible state — never bare browser
+  default, and never no state at all. If an element is meant to look
+  designed, nothing about it should visibly read as unstyled.
+- Use the full token set [[SHU-000]]'s audit captured
+  (`docs/reference-site-audit.md` §3), not a narrower subset chosen for
+  convenience during schema translation. If a ticket needs a token
+  `siteTheme`/`_tokens.scss` doesn't have yet (a background variant, a
+  radius step, a motion value), add it there — don't work around its
+  absence or hardcode a literal value instead.
+- Motion (transitions/animations) draws from a shared token vocabulary
+  (`--transition-*`, easing), not ad hoc per-component durations, and
+  always respects `prefers-reduced-motion`.
+- Before marking a UI ticket done, do a live visual check against the
+  reference site (or the audit's description of it) for that section, not
+  just automated checks — axe/lint/tests catch correctness, not whether it
+  looks finished.
+
 ## Performance / Core Web Vitals
 
 - Images: explicit dimensions or `fill` with a sized parent, correct `sizes`,
