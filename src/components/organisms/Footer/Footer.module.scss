@@ -1,8 +1,8 @@
 @use "../../../styles/mixins";
 
 .footer {
-  background: var(--color-surface);
-  color: var(--color-text);
+  background: var(--color-background-dark);
+  color: var(--color-text-inverse);
   padding: var(--space-xl) var(--space-md);
 }
 
@@ -44,6 +44,17 @@
   flex-direction: column;
   gap: var(--space-xs);
   font-style: normal;
+}
+
+.contactRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  color: var(--color-primary);
+}
+
+.contactRow > :last-child {
+  color: var(--color-text-inverse);
 }
 
 .social {

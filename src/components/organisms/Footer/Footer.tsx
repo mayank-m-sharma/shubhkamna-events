@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 
+import { Icon } from "@/components/atoms/Icon";
 import { Link } from "@/components/atoms/Link";
 import { SocialLinksList } from "@/components/molecules/SocialLinksList";
 import type { FooterProps } from "@/types/footerConfig";
@@ -37,12 +38,20 @@ export function Footer({
         {hasContactInfo ? (
           <address className={styles.contact}>
             {contactPhone ? (
-              <Link href={`tel:${contactPhone}`}>{contactPhone}</Link>
+              <span className={styles.contactRow}>
+                <Icon name="phone" size="sm" />
+                <Link href={`tel:${contactPhone}`}>{contactPhone}</Link>
+              </span>
             ) : null}
             {contactEmail ? (
               <Link href={`mailto:${contactEmail}`}>{contactEmail}</Link>
             ) : null}
-            {contactAddress ? <span>{contactAddress}</span> : null}
+            {contactAddress ? (
+              <span className={styles.contactRow}>
+                <Icon name="location" size="sm" />
+                <span>{contactAddress}</span>
+              </span>
+            ) : null}
           </address>
         ) : null}
         <SocialLinksList links={socialLinks} className={styles.social} />

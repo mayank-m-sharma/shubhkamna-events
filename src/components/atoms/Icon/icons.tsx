@@ -60,4 +60,24 @@ export const iconPaths: Record<IconName, ReactNode> = {
       <path d="M10 9.5v5l4.5-2.5z" fill="currentColor" stroke="none" />
     </>
   ),
+  phone: (
+    <>
+      <rect x="7" y="2" width="10" height="20" rx="2" />
+      <path d="M11 18h2" />
+    </>
+  ),
+  location: (
+    <>
+      <path d="M12 21s-7-6.5-7-11a7 7 0 0 1 14 0c0 4.5-7 11-7 11z" />
+      <circle cx="12" cy="10" r="2.5" />
+    </>
+  ),
+  // A generic decorative sparkle mark for the header wordmark — not a
+  // reproduction of the reference site's specific logo artwork (which we
+  // only have as a rendered screenshot, not source), just an
+  // events-brand-appropriate accent in the same hand-drawn style as the
+  // rest of this set.
+  logo: (
+    <path d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8L12 2z" />
+  ),
 };

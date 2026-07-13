@@ -21,6 +21,12 @@ export const siteThemeSchema = z.object({
   colorBackground: hexColor,
   colorSurface: hexColor,
   colorText: hexColor,
+  // A dedicated dark-mode background (footer, and any future dark section)
+  // + its matching text color — the reference site's footer is intentionally
+  // dark regardless of the light/dark mode of the rest of the page, not a
+  // user-toggled dark mode (see docs/reference-site-audit.md §3).
+  colorBackgroundDark: hexColor,
+  colorTextInverse: hexColor,
   headingFont: z.enum(headingFontKeys),
   bodyFont: z.enum(bodyFontKeys),
   fontSizeXs: cssLength,
@@ -52,6 +58,8 @@ export const fallbackSiteTheme: SiteTheme = {
   colorBackground: "#ffffff",
   colorSurface: "#f7f5f2",
   colorText: "#1a1a1a",
+  colorBackgroundDark: "#121320",
+  colorTextInverse: "#f1f5f9",
   headingFont: "system",
   bodyFont: "system",
   fontSizeXs: "0.75rem",

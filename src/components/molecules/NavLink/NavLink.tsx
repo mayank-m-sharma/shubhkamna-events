@@ -4,7 +4,10 @@ import { usePathname } from "next/navigation";
 import type { ReactNode } from "react";
 
 import { Link } from "@/components/atoms/Link";
+import { cn } from "@/lib/utils/cn";
 import type { NavLinkProps } from "@/types/navLink";
+
+import styles from "./NavLink.module.scss";
 
 export function NavLink({
   href,
@@ -17,7 +20,7 @@ export function NavLink({
   return (
     <Link
       href={href}
-      className={className}
+      className={cn(isActive && styles.active, className)}
       aria-current={isActive ? "page" : undefined}
     >
       {children}

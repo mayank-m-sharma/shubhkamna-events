@@ -57,6 +57,16 @@ export const siteTheme = defineType({
     hexColorField("colorAccent", "Accent color", "#d81b60"),
     hexColorField("colorBackground", "Background color", "#f6f6f8"),
     hexColorField("colorSurface", "Surface color", "#ffffff"),
+    hexColorField(
+      "colorBackgroundDark",
+      "Background color (dark sections, e.g. footer)",
+      "#121320",
+    ),
+    hexColorField(
+      "colorTextInverse",
+      "Text color (on dark sections)",
+      "#f1f5f9",
+    ),
     defineField({
       name: "colorText",
       title: "Text color",

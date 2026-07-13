@@ -12,6 +12,8 @@ export function buildThemeStyle(theme: SiteTheme): string {
     `--color-background:${theme.colorBackground};`,
     `--color-surface:${theme.colorSurface};`,
     `--color-text:${theme.colorText};`,
+    `--color-background-dark:${theme.colorBackgroundDark};`,
+    `--color-text-inverse:${theme.colorTextInverse};`,
     `--font-heading-fallback:${headingFontCssValue[theme.headingFont]};`,
     `--font-body-fallback:${bodyFontCssValue[theme.bodyFont]};`,
     `--font-size-xs:${theme.fontSizeXs};`,
