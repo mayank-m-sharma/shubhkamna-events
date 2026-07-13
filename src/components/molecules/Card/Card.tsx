@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 
 import { Heading } from "@/components/atoms/Heading";
+import { Icon } from "@/components/atoms/Icon";
 import { Image } from "@/components/atoms/Image";
 import { Link } from "@/components/atoms/Link";
 import { Text } from "@/components/atoms/Text";
@@ -12,6 +13,7 @@ import styles from "./Card.module.scss";
 export function Card({
   image,
   imageAlt,
+  icon,
   heading,
   text,
   href,
@@ -26,6 +28,8 @@ export function Card({
           sizes="(min-width: 768px) 33vw, 100vw"
           className={styles.image}
         />
+      ) : icon ? (
+        <Icon name={icon} size="lg" className={styles.icon} />
       ) : null}
       <Heading as="h3" size="md">
         {heading}

@@ -23,9 +23,25 @@ export const heroSectionSchema = z.object({
   secondaryCtaLabel: optionalNullable(z.string()),
   secondaryCtaHref: optionalNullable(z.string()),
 });
+export const serviceItemSchema = z.object({
+  icon: z.enum(["heart", "briefcase", "cake", "temple"]),
+  title: z.string().min(1),
+  description: z.string().min(1),
+  href: optionalNullable(z.string()),
+});
+
+export type ServiceItem = z.infer<typeof serviceItemSchema>;
+
 export const servicesSectionSchema = z.object({
   _type: z.literal("servicesSection"),
   heading: optionalNullable(z.string()),
+  intro: optionalNullable(z.string()),
+  viewAllLabel: optionalNullable(z.string()),
+  viewAllHref: optionalNullable(z.string()),
+  items: z
+    .array(serviceItemSchema)
+    .nullish()
+    .transform((value) => value ?? []),
 });
 export const gallerySectionSchema = z.object({
   _type: z.literal("gallerySection"),

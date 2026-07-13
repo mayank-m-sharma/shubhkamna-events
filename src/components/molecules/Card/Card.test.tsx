@@ -48,6 +48,26 @@ describe("Card", () => {
     expect(screen.getByAltText("Wedding decor setup")).toBeInTheDocument();
   });
 
+  it("renders the icon when no image is given", () => {
+    const { container } = render(<Card heading="Weddings" icon="heart" />);
+
+    expect(container.querySelector("svg")).toBeInTheDocument();
+  });
+
+  it("prefers the image over the icon when both are given", () => {
+    const { container } = render(
+      <Card
+        heading="Weddings"
+        icon="heart"
+        image={mockImage}
+        imageAlt="Wedding decor setup"
+      />,
+    );
+
+    expect(screen.getByAltText("Wedding decor setup")).toBeInTheDocument();
+    expect(container.querySelector("svg")).not.toBeInTheDocument();
+  });
+
   it("renders as a plain article when no href is given", () => {
     const { container } = render(<Card heading="Weddings" />);
 

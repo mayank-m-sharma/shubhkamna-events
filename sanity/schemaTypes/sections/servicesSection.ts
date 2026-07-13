@@ -1,9 +1,12 @@
-import { defineField, defineType } from "sanity";
+import { defineArrayMember, defineField, defineType } from "sanity";
 
-// Remaining content fields (service cards, "see all" link) are added by
-// SHU-011 — `heading` is seeded now because every homepage section in
-// SHU-000's audit has one, and Sanity requires an object type to have at
-// least one field to be valid.
+const ICON_OPTIONS = [
+  { title: "Heart (weddings)", value: "heart" },
+  { title: "Briefcase (corporate)", value: "briefcase" },
+  { title: "Cake (social events)", value: "cake" },
+  { title: "Temple (destination & religious)", value: "temple" },
+];
+
 export const servicesSection = defineType({
   name: "servicesSection",
   title: "Services",
@@ -13,6 +16,67 @@ export const servicesSection = defineType({
       name: "heading",
       title: "Heading",
       type: "string",
+    }),
+    defineField({
+      name: "intro",
+      title: "Intro text",
+      type: "text",
+      rows: 2,
+    }),
+    defineField({
+      name: "viewAllLabel",
+      title: '"View all" link label',
+      description: "Leave both view-all fields empty to hide the link.",
+      type: "string",
+    }),
+    defineField({
+      name: "viewAllHref",
+      title: '"View all" link URL',
+      type: "string",
+    }),
+    defineField({
+      name: "items",
+      title: "Service items",
+      description: "Drag to reorder.",
+      type: "array",
+      of: [
+        defineArrayMember({
+          name: "serviceItem",
+          title: "Service item",
+          type: "object",
+          fields: [
+            defineField({
+              name: "icon",
+              title: "Icon",
+              type: "string",
+              options: { list: ICON_OPTIONS },
+              validation: (rule) => rule.required(),
+            }),
+            defineField({
+              name: "title",
+              title: "Title",
+              type: "string",
+              validation: (rule) => rule.required(),
+            }),
+            defineField({
+              name: "description",
+              title: "Description",
+              type: "text",
+              rows: 2,
+              validation: (rule) => rule.required(),
+            }),
+            defineField({
+              name: "href",
+              title: "Link",
+              description: "Optional link to a detail page (see SHU-017).",
+              type: "string",
+            }),
+          ],
+          preview: {
+            select: { title: "title", subtitle: "description" },
+          },
+        }),
+      ],
     }),
   ],
   preview: {
