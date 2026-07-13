@@ -163,11 +163,53 @@ function buildGallerySectionSeed(images: GalleryImages): GallerySectionSeed {
   };
 }
 
+// Sourced from docs/reference-site-audit.md §2.3 — no photos on the
+// reference (initials-avatar fallback only), so no images needed here.
+const testimonialsSectionSeed: TestimonialsSection = {
+  _type: "testimonialsSection",
+  heading: "What Our Clients Think",
+  intro:
+    "We take pride in our 5-star reputation. Here is what people are saying about Shubhkamna Events.",
+  items: [
+    {
+      quote:
+        "They made every event very creative and in pocket of budget. Beautiful wedding decor. Very helpful and clear communication.",
+      author: "Jyoti Bansal",
+      role: "Wedding Client",
+      photo: undefined,
+      rating: 5,
+    },
+    {
+      quote:
+        "Excellent service! Shubhkamna Events planned our daughter's wedding perfectly. The decor was stunning and everything was managed professionally. Highly recommended!",
+      author: "Rajesh Khanna",
+      role: "Wedding Planner",
+      photo: undefined,
+      rating: 5,
+    },
+    {
+      quote:
+        "Best event planners in Indore! They handled our corporate conference flawlessly. Professional team, amazing decor, and timely execution. Will definitely use their services again.",
+      author: "Sneha Mehta",
+      role: "Corporate Event",
+      photo: undefined,
+      rating: 5,
+    },
+    {
+      quote:
+        "Amazing experience with Shubhkamna Events for our baby shower. The decoration was beautiful and the team was very supportive throughout. 5 stars from us!",
+      author: "Priyanka Verma",
+      role: "Baby shower",
+      photo: undefined,
+      rating: 5,
+    },
+  ],
+};
+
 // Section order and content match the reference site's homepage flow
 // (SHU-000's audit §2.3: hero, services, gallery, testimonials, contact).
-// Sections after gallery carry only their `heading` for now — the rest of
-// each one's content fields are seeded by its own ticket (SHU-013–SHU-014)
-// once they exist on the schema.
+// The contact section carries only its `heading` for now — its content
+// fields are seeded by SHU-014 once they exist on the schema.
 export async function buildHomePageSeed(
   client: SanityClient,
 ): Promise<HomePageSeed> {
@@ -182,7 +224,7 @@ export async function buildHomePageSeed(
       buildHeroSectionSeed(v1!),
       servicesSectionSeed,
       buildGallerySectionSeed({ v1: v1!, v3: v3!, v5: v5!, v6: v6!, v7: v7! }),
-      { _type: "testimonialsSection", heading: "What Our Clients Think" },
+      testimonialsSectionSeed,
       { _type: "contactSection", heading: "Ready to Create Magical Moments?" },
     ],
   };
