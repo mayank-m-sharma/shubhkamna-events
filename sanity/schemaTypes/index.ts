@@ -1,5 +1,6 @@
 import type { SchemaTypeDefinition } from "sanity";
 
+import { enquiry } from "./enquiry";
 import { footerConfig } from "./footerConfig";
 import { headerConfig } from "./headerConfig";
 import { homePage } from "./homePage";
@@ -23,5 +24,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     gallerySection,
     testimonialsSection,
     contactSection,
+    enquiry,
   ],
 };

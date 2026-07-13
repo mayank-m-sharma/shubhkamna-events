@@ -206,10 +206,21 @@ const testimonialsSectionSeed: TestimonialsSection = {
   ],
 };
 
+// Sourced from docs/reference-site-audit.md §2.3 — the homepage's
+// CTA-teaser section (phone/WhatsApp banner), not the full enquiry form
+// (that's the "form" variant, used only on the future dedicated Contact
+// page, SHU-029).
+const contactSectionSeed: ContactSection = {
+  _type: "contactSection",
+  variant: "banner",
+  heading: "Ready to Create Magical Moments?",
+  intro:
+    "Contact the 5-star experts at Shubhkamna Events today. We are open 24/7 to help you plan your next big event in Indore.",
+  successMessage: undefined,
+};
+
 // Section order and content match the reference site's homepage flow
 // (SHU-000's audit §2.3: hero, services, gallery, testimonials, contact).
-// The contact section carries only its `heading` for now — its content
-// fields are seeded by SHU-014 once they exist on the schema.
 export async function buildHomePageSeed(
   client: SanityClient,
 ): Promise<HomePageSeed> {
@@ -225,7 +236,7 @@ export async function buildHomePageSeed(
       servicesSectionSeed,
       buildGallerySectionSeed({ v1: v1!, v3: v3!, v5: v5!, v6: v6!, v7: v7! }),
       testimonialsSectionSeed,
-      { _type: "contactSection", heading: "Ready to Create Magical Moments?" },
+      contactSectionSeed,
     ],
   };
 }

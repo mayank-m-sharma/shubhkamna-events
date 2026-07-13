@@ -53,6 +53,17 @@ test suite on every commit; commits are rejected if any of those fail.
 3. Sign in to `/studio` with your Sanity account and publish one "Site
    Settings" document — the coming-soon page falls back to placeholder copy
    until you do.
+4. **Restrict `enquiry` document reads**: SHU-014's contact form writes
+   submissions (name/email/phone/message) into Sanity as `enquiry`
+   documents via a write-token Server Action. If this project's dataset
+   has the default "public" visibility, anyone with the project ID can
+   query those documents' PII directly through Sanity's read API — the
+   app itself never reads them back, but the dataset-wide read grant isn't
+   something a coding agent can restrict from code. In the
+   [Sanity manage console](https://www.sanity.io/manage) → API → dataset
+   settings, either switch the dataset to private, or add a role-based
+   restriction scoped to the `enquiry` type, before real enquiries start
+   coming in.
 
 ## Project structure
 
