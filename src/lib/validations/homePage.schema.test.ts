@@ -136,3 +136,64 @@ describe("heroSectionSchema (via homePageSchema)", () => {
     expect(result.success).toBe(false);
   });
 });
+
+describe("servicesSectionSchema", () => {
+  it("defaults items to [] when GROQ returns null, so an empty section is valid", () => {
+    const parsed = servicesSectionSchema.parse({
+      _type: "servicesSection",
+      items: null,
+    });
+
+    expect(parsed.items).toEqual([]);
+  });
+
+  it("accepts a full set of service items matching the SHU-000 audit shape", () => {
+    const parsed = servicesSectionSchema.parse({
+      _type: "servicesSection",
+      heading: "What We Do Best",
+      intro:
+        "From personal celebrations to large-scale professional events, we provide end-to-end management services.",
+      viewAllLabel: "See All Services",
+      viewAllHref: "/services",
+      items: [
+        {
+          icon: "heart",
+          title: "Weddings",
+          description:
+            "Royal wedding and engagement planning with customized themes, complete decor, and management.",
+          href: "/services",
+        },
+      ],
+    });
+
+    expect(parsed.items).toHaveLength(1);
+    expect(parsed.items[0]?.icon).toBe("heart");
+  });
+
+  it("rejects an item with an icon outside the supported set", () => {
+    const result = servicesSectionSchema.safeParse({
+      _type: "servicesSection",
+      items: [{ icon: "not-an-icon", title: "Weddings", description: "..." }],
+    });
+
+    expect(result.success).toBe(false);
+  });
+
+  it("rejects an item missing its title or description", () => {
+    const result = servicesSectionSchema.safeParse({
+      _type: "servicesSection",
+      items: [{ icon: "heart", title: "Weddings" }],
+    });
+
+    expect(result.success).toBe(false);
+  });
+
+  it("treats an item's link as optional", () => {
+    const parsed = servicesSectionSchema.parse({
+      _type: "servicesSection",
+      items: [{ icon: "heart", title: "Weddings", description: "..." }],
+    });
+
+    expect(parsed.items[0]?.href).toBeUndefined();
+  });
+});

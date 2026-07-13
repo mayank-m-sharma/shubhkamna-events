@@ -72,6 +72,31 @@ describe("buildHomePageSeed", () => {
     });
   });
 
+  it("carries the reference site's real services catalog from the SHU-000 audit", async () => {
+    const seed = await buildHomePageSeed(
+      mockClient("image-hero-800x1000-webp"),
+    );
+    const [, services] = seed.sections;
+
+    expect(services.intro).toBe(
+      "From personal celebrations to large-scale professional events, we provide end-to-end management services.",
+    );
+    expect(services.viewAllLabel).toBe("See All Services");
+    expect(services.viewAllHref).toBe("/services");
+    expect(services.items.map((item) => item.title)).toEqual([
+      "Weddings",
+      "Corporate",
+      "Social Events",
+      "Destination & Religious",
+    ]);
+    expect(services.items.map((item) => item.icon)).toEqual([
+      "heart",
+      "briefcase",
+      "cake",
+      "temple",
+    ]);
+  });
+
   it("carries the reference site's real headings for the remaining sections", async () => {
     const seed = await buildHomePageSeed(
       mockClient("image-hero-800x1000-webp"),

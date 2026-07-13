@@ -69,7 +69,44 @@ export async function buildHomePageSeed(
         secondaryCtaLabel: "View Portfolio",
         secondaryCtaHref: "/gallery",
       },
-      { _type: "servicesSection", heading: "What We Do Best" },
+      {
+        _type: "servicesSection",
+        heading: "What We Do Best",
+        intro:
+          "From personal celebrations to large-scale professional events, we provide end-to-end management services.",
+        viewAllLabel: "See All Services",
+        viewAllHref: "/services",
+        items: [
+          {
+            icon: "heart",
+            title: "Weddings",
+            description:
+              "Royal wedding and engagement planning with customized themes, complete decor, and management.",
+            href: "/services",
+          },
+          {
+            icon: "briefcase",
+            title: "Corporate",
+            description:
+              "Expert conference planning, product launch, concert management, and team building events.",
+            href: "/services",
+          },
+          {
+            icon: "cake",
+            title: "Social Events",
+            description:
+              "Birthday parties, baby shower, kitty parties, house warming, and anniversary celebrations.",
+            href: "/services",
+          },
+          {
+            icon: "temple",
+            title: "Destination & Religious",
+            description:
+              "Destination wedding planning, religious ceremonies, emcee & DJ, professional lighting services.",
+            href: "/services",
+          },
+        ],
+      },
       { _type: "gallerySection", heading: "Capturing Every Moment" },
       { _type: "testimonialsSection", heading: "What Our Clients Think" },
       { _type: "contactSection", heading: "Ready to Create Magical Moments?" },

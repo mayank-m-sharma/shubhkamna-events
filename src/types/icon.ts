@@ -12,7 +12,11 @@ export type IconName =
   | "youtube"
   | "phone"
   | "location"
-  | "logo";
+  | "logo"
+  | "heart"
+  | "briefcase"
+  | "cake"
+  | "temple";
 
 export type IconSize = "sm" | "md" | "lg";
 

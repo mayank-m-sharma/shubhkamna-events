@@ -80,4 +80,35 @@ export const iconPaths: Record<IconName, ReactNode> = {
   logo: (
     <path d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8L12 2z" />
   ),
+  // Services-section category icons (SHU-011), matching the reference
+  // site's Weddings/Corporate/Social Events/Destination & Religious cards.
+  heart: (
+    <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z" />
+  ),
+  briefcase: (
+    <>
+      <rect x="2" y="7" width="20" height="14" rx="2" />
+      <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+    </>
+  ),
+  cake: (
+    <>
+      <path d="M20 21v-8a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8" />
+      <path d="M4 16h16" />
+      <path d="M8 8v3" />
+      <path d="M12 8v3" />
+      <path d="M16 8v3" />
+      <circle cx="12" cy="4" r="1" fill="currentColor" stroke="none" />
+    </>
+  ),
+  temple: (
+    <>
+      <path d="M12 2 4 8h16z" />
+      <path d="M6 8v11" />
+      <path d="M10 8v11" />
+      <path d="M14 8v11" />
+      <path d="M18 8v11" />
+      <path d="M3 21h18" />
+    </>
+  ),
 };
