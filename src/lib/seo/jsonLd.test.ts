@@ -1,4 +1,8 @@
-import { buildOrganizationJsonLd } from "./jsonLd";
+import {
+  buildBreadcrumbJsonLd,
+  buildOrganizationJsonLd,
+  buildServiceJsonLd,
+} from "./jsonLd";
 
 describe("buildOrganizationJsonLd", () => {
   it("builds a schema.org Organization object from the given name/description", () => {
@@ -57,5 +61,87 @@ describe("buildOrganizationJsonLd", () => {
     });
 
     expect(jsonLd).not.toHaveProperty("sameAs");
+  });
+});
+
+describe("buildServiceJsonLd", () => {
+  it("builds a schema.org Service object with a nested Organization provider", () => {
+    const jsonLd = buildServiceJsonLd({
+      name: "Weddings",
+      description: "Complete wedding planning and engagement coordination.",
+      url: "http://localhost:3000/services/weddings",
+      providerName: "Shubhkamna Events",
+    });
+
+    expect(jsonLd).toMatchObject({
+      "@context": "https://schema.org",
+      "@type": "Service",
+      serviceType: "Weddings",
+      name: "Weddings",
+      description: "Complete wedding planning and engagement coordination.",
+      url: "http://localhost:3000/services/weddings",
+      provider: {
+        "@type": "Organization",
+        name: "Shubhkamna Events",
+      },
+    });
+  });
+
+  it("includes image when given, omits it when not", () => {
+    const withImage = buildServiceJsonLd({
+      name: "Weddings",
+      description: "Description.",
+      url: "http://localhost:3000/services/weddings",
+      providerName: "Shubhkamna Events",
+      imageUrl: "https://cdn.sanity.io/images/proj/ds/wedding.jpg",
+    });
+
+    expect(withImage).toMatchObject({
+      image: "https://cdn.sanity.io/images/proj/ds/wedding.jpg",
+    });
+
+    const withoutImage = buildServiceJsonLd({
+      name: "Weddings",
+      description: "Description.",
+      url: "http://localhost:3000/services/weddings",
+      providerName: "Shubhkamna Events",
+    });
+
+    expect(withoutImage).not.toHaveProperty("image");
+  });
+});
+
+describe("buildBreadcrumbJsonLd", () => {
+  it("builds a schema.org BreadcrumbList with 1-based positions", () => {
+    const jsonLd = buildBreadcrumbJsonLd([
+      { name: "Home", url: "http://localhost:3000" },
+      { name: "Services", url: "http://localhost:3000/services" },
+      { name: "Weddings", url: "http://localhost:3000/services/weddings" },
+    ]);
+
+    expect(jsonLd).toEqual({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: "http://localhost:3000",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Services",
+          item: "http://localhost:3000/services",
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: "Weddings",
+          item: "http://localhost:3000/services/weddings",
+        },
+      ],
+    });
   });
 });

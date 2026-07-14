@@ -86,28 +86,28 @@ const servicesSectionSeed: ServicesSection = {
       title: "Weddings",
       description:
         "Royal wedding and engagement planning with customized themes, complete decor, and management.",
-      href: "/services",
+      href: "/services/weddings",
     },
     {
       icon: "briefcase",
       title: "Corporate",
       description:
         "Expert conference planning, product launch, concert management, and team building events.",
-      href: "/services",
+      href: "/services/corporate",
     },
     {
       icon: "cake",
       title: "Social Events",
       description:
         "Birthday parties, baby shower, kitty parties, house warming, and anniversary celebrations.",
-      href: "/services",
+      href: "/services/social-events",
     },
     {
       icon: "temple",
       title: "Destination & Religious",
       description:
         "Destination wedding planning, religious ceremonies, emcee & DJ, professional lighting services.",
-      href: "/services",
+      href: "/services/special-events",
     },
   ],
 };

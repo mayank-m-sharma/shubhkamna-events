@@ -139,3 +139,36 @@ export const homePageQuery = `*[_type == "homePage"][0]{
     }
   }
 }`;
+
+const serviceProjection = `{
+  title,
+  "slug": slug.current,
+  icon,
+  description,
+  image ${imageProjection},
+  imageAlt,
+  features,
+  gallery[]{
+    image ${imageProjection},
+    alt,
+    caption,
+    category
+  },
+  ctaLabel,
+  ctaHref,
+  order
+}`;
+
+export const serviceBySlugQuery = `*[_type == "service" && slug.current == $slug][0]${serviceProjection}`;
+
+// Shared by generateStaticParams (route) and sitemap.ts — both only need
+// slugs, not the full document, so this is a separate, cheaper projection
+// rather than reusing serviceBySlugQuery.
+export const serviceSlugsQuery = `*[_type == "service" && defined(slug.current)]{
+  "slug": slug.current
+}`;
+
+// Sorted so an explicit editor-set `order` wins; services sharing the same
+// (or unset) order fall back to alphabetical, matching the seed data's
+// intended display order without depending on document creation order.
+export const servicesQuery = `*[_type == "service" && defined(slug.current)] | order(order asc, title asc)${serviceProjection}`;

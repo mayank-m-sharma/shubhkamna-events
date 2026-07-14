@@ -1,6 +1,7 @@
 import { z } from "zod";
 
 import { sanityImageSchema } from "@/lib/validations/image.schema";
+import { serviceIconSchema } from "@/lib/validations/serviceIcon.schema";
 import { optionalNullable } from "@/lib/validations/zodHelpers";
 
 // `heading` is the one field every stub homepage section shares (SHU-000's
@@ -24,7 +25,7 @@ export const heroSectionSchema = z.object({
   secondaryCtaHref: optionalNullable(z.string()),
 });
 export const serviceItemSchema = z.object({
-  icon: z.enum(["heart", "briefcase", "cake", "temple"]),
+  icon: serviceIconSchema,
   title: z.string().min(1),
   description: z.string().min(1),
   href: optionalNullable(z.string()),

@@ -1,0 +1,69 @@
+@use "../../../styles/mixins";
+
+.serviceDetail {
+  @include mixins.container;
+  padding-block: var(--space-2xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xl);
+}
+
+.header {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: var(--space-xl);
+
+  @include mixins.from(md) {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  flex: 1;
+}
+
+.description {
+  color: var(--color-text-muted);
+}
+
+.features {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  li {
+    padding-left: var(--space-lg);
+    position: relative;
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.6em;
+      width: 0.5em;
+      height: 0.5em;
+      border-radius: 50%;
+      background: var(--color-primary);
+    }
+  }
+}
+
+.imageWrapper {
+  position: relative;
+  flex: 1;
+  aspect-ratio: 4 / 3;
+  width: 100%;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.image {
+  object-fit: cover;
+}

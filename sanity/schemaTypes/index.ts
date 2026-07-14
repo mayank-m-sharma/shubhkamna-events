@@ -9,6 +9,7 @@ import { gallerySection } from "./sections/gallerySection";
 import { heroSection } from "./sections/heroSection";
 import { servicesSection } from "./sections/servicesSection";
 import { testimonialsSection } from "./sections/testimonialsSection";
+import { service } from "./service";
 import { siteSettings } from "./siteSettings";
 import { siteTheme } from "./siteTheme";
 
@@ -25,5 +26,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     testimonialsSection,
     contactSection,
     enquiry,
+    service,
   ],
 };

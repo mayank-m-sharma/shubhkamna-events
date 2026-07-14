@@ -1,6 +1,7 @@
 import { footerConfigSeed } from "./data/footerConfig";
 import { headerConfigSeed } from "./data/headerConfig";
 import { buildHomePageSeed } from "./data/homePage";
+import { buildServiceSeeds } from "./data/service";
 import { siteSettingsSeed } from "./data/siteSettings";
 import { siteThemeSeed } from "./data/siteTheme";
 import { sanityWriteClient } from "./sanityWriteClient";
@@ -42,6 +43,14 @@ async function main(): Promise<void> {
     ...homePageSeed,
   });
   console.warn(`homePage: ${homePageResult}`);
+
+  const serviceSeeds = await buildServiceSeeds(sanityWriteClient);
+  for (const serviceSeed of serviceSeeds) {
+    const serviceResult = await upsertDocument(sanityWriteClient, {
+      ...serviceSeed,
+    });
+    console.warn(`service (${serviceSeed.slug.current}): ${serviceResult}`);
+  }
 }
 
 main().catch((error: unknown) => {
