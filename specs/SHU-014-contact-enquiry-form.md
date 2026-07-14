@@ -5,7 +5,8 @@
 **Status:**
 
 - [ ] Not started
-- [x] Completed
+- [ ] Completed
+- [x] Rejected
 
 ## User story
 
