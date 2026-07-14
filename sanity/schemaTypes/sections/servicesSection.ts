@@ -5,6 +5,8 @@ const ICON_OPTIONS = [
   { title: "Briefcase (corporate)", value: "briefcase" },
   { title: "Cake (social events)", value: "cake" },
   { title: "Temple (destination & religious)", value: "temple" },
+  { title: "Palette (decorations)", value: "palette" },
+  { title: "Music note (entertainment)", value: "music-note" },
 ];
 
 export const servicesSection = defineType({

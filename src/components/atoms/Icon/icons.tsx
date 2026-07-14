@@ -111,4 +111,22 @@ export const iconPaths: Record<IconName, ReactNode> = {
       <path d="M3 21h18" />
     </>
   ),
+  // Service-detail category icons (SHU-017), for the two categories the
+  // homepage's 4-item services summary doesn't cover: Decorations and
+  // Entertainment.
+  palette: (
+    <>
+      <path d="M12 3a9 9 0 1 0 0 18c1.1 0 2-.9 2-2 0-.5-.2-1-.5-1.3-.3-.3-.5-.8-.5-1.2 0-1 .8-1.8 1.8-1.8H16a4 4 0 0 0 4-4c0-4.4-3.6-7.7-8-7.7z" />
+      <circle cx="7.5" cy="10.5" r="1.2" fill="currentColor" stroke="none" />
+      <circle cx="10.5" cy="7" r="1.2" fill="currentColor" stroke="none" />
+      <circle cx="15" cy="7.5" r="1.2" fill="currentColor" stroke="none" />
+    </>
+  ),
+  "music-note": (
+    <>
+      <path d="M9 18V5l11-2v13" />
+      <circle cx="6" cy="18" r="3" />
+      <circle cx="17" cy="16" r="3" />
+    </>
+  ),
 };

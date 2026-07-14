@@ -16,7 +16,9 @@ export type IconName =
   | "heart"
   | "briefcase"
   | "cake"
-  | "temple";
+  | "temple"
+  | "palette"
+  | "music-note";
 
 export type IconSize = "sm" | "md" | "lg";
 
