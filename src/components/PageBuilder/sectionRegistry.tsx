@@ -4,6 +4,7 @@ import { ContactSection } from "@/components/organisms/ContactSection";
 import { Gallery } from "@/components/organisms/Gallery";
 import { Hero } from "@/components/organisms/Hero";
 import { Services } from "@/components/organisms/Services";
+import { Stats } from "@/components/organisms/Stats";
 import { Testimonials } from "@/components/organisms/Testimonials";
 import type { HomePageSection } from "@/types/cms";
 
@@ -55,4 +56,5 @@ export const sectionRegistry: {
       whatsappNumber={extras.whatsappNumber}
     />
   ),
+  statsSection: (section) => <Stats {...section} />,
 };

@@ -103,12 +103,29 @@ export const contactSectionSchema = z.object({
   successMessage: optionalNullable(z.string()),
 });
 
+export const statItemSchema = z.object({
+  value: z.string().min(1),
+  label: z.string().min(1),
+});
+
+export type StatItem = z.infer<typeof statItemSchema>;
+
+export const statsSectionSchema = z.object({
+  _type: z.literal("statsSection"),
+  heading: optionalNullable(z.string()),
+  items: z
+    .array(statItemSchema)
+    .nullish()
+    .transform((value) => value ?? []),
+});
+
 export const homePageSectionSchema = z.discriminatedUnion("_type", [
   heroSectionSchema,
   servicesSectionSchema,
   gallerySectionSchema,
   testimonialsSectionSchema,
   contactSectionSchema,
+  statsSectionSchema,
 ]);
 
 export type HeroSection = z.infer<typeof heroSectionSchema>;
@@ -116,6 +133,7 @@ export type ServicesSection = z.infer<typeof servicesSectionSchema>;
 export type GallerySection = z.infer<typeof gallerySectionSchema>;
 export type TestimonialsSection = z.infer<typeof testimonialsSectionSchema>;
 export type ContactSection = z.infer<typeof contactSectionSchema>;
+export type StatsSection = z.infer<typeof statsSectionSchema>;
 export type HomePageSection = z.infer<typeof homePageSectionSchema>;
 
 export const homePageSchema = z.object({
