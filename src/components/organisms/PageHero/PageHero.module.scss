@@ -45,6 +45,27 @@
   --color-text-muted: rgb(255 255 255 / 85%);
 }
 
+.eyebrow {
+  margin: 0 0 var(--space-xs);
+  color: var(--color-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  font-size: var(--font-size-sm);
+}
+
+.highlight {
+  display: inline;
+  background: linear-gradient(
+    90deg,
+    var(--color-primary) 0%,
+    var(--color-accent) 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
 .subhead {
   max-width: 60ch;
   margin: var(--space-sm) auto 0;

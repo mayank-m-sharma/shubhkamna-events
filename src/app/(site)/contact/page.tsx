@@ -3,10 +3,10 @@ import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
 
 import { JsonLd } from "@/components/atoms/JsonLd";
-import { ContactHero } from "@/components/organisms/ContactHero";
 import { ContactInfoPanel } from "@/components/organisms/ContactInfoPanel";
 import { ContactSection } from "@/components/organisms/ContactSection";
 import { FAQ } from "@/components/organisms/FAQ";
+import { PageHero } from "@/components/organisms/PageHero";
 import { siteUrl } from "@/lib/sanity/env";
 import { getContactPage } from "@/lib/sanity/getContactPage";
 import { getSiteSettings } from "@/lib/sanity/getSiteSettings";
@@ -60,7 +60,8 @@ export default async function ContactPage(): Promise<ReactNode> {
           { name: contactPage.heroHeading, url: contactUrl },
         ])}
       />
-      <ContactHero
+      <PageHero
+        eyebrow={contactPage.heroEyebrow}
         heading={contactPage.heroHeading}
         subhead={contactPage.heroSubhead}
         backgroundImage={contactPage.heroBackgroundImage}

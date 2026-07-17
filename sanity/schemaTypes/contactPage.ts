@@ -14,6 +14,12 @@ export const contactPage = defineType({
   ],
   fields: [
     defineField({
+      name: "heroEyebrow",
+      title: "Eyebrow label",
+      type: "string",
+      group: "hero",
+    }),
+    defineField({
       name: "heroHeading",
       title: "Heading",
       type: "string",

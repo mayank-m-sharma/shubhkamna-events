@@ -6,6 +6,7 @@ import { sanityImageSchema } from "@/lib/validations/image.schema";
 import { optionalNullable } from "@/lib/validations/zodHelpers";
 
 export const contactPageSchema = z.object({
+  heroEyebrow: optionalNullable(z.string()),
   heroHeading: z.string().min(1),
   heroSubhead: optionalNullable(z.string()),
   heroBackgroundImage: optionalNullable(sanityImageSchema),

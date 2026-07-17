@@ -4,6 +4,7 @@ import { buildGalleryPageSeed } from "./data/galleryPage";
 import { headerConfigSeed } from "./data/headerConfig";
 import { buildHomePageSeed } from "./data/homePage";
 import { buildServiceSeeds } from "./data/service";
+import { servicesPageSeed } from "./data/servicesPage";
 import { siteSettingsSeed } from "./data/siteSettings";
 import { siteThemeSeed } from "./data/siteTheme";
 import { sanityWriteClient } from "./sanityWriteClient";
@@ -69,6 +70,13 @@ async function main(): Promise<void> {
     ...contactPageSeed,
   });
   console.warn(`contactPage: ${contactPageResult}`);
+
+  const servicesPageResult = await upsertDocument(sanityWriteClient, {
+    _id: "servicesPage",
+    _type: "servicesPage",
+    ...servicesPageSeed,
+  });
+  console.warn(`servicesPage: ${servicesPageResult}`);
 }
 
 main().catch((error: unknown) => {

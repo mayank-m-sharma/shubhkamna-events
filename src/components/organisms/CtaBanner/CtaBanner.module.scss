@@ -1,0 +1,68 @@
+@use "../../../styles/mixins";
+
+.banner {
+  @include mixins.container;
+  margin-block: var(--space-xl);
+  background: var(--color-primary);
+  border-radius: var(--radius-md);
+  padding: var(--space-xl) var(--space-lg);
+  text-align: center;
+  // Re-scopes the color tokens Heading/Text already read, rather than
+  // fighting their own `color: var(--color-text)` declarations with a
+  // separate override class — those atoms would otherwise always win
+  // since they set color directly, not by inheritance.
+  --color-text: var(--color-text-inverse);
+  --color-text-muted: rgb(255 255 255 / 85%);
+
+  @include mixins.from(md) {
+    padding: var(--space-2xl);
+  }
+}
+
+.body {
+  max-width: 60ch;
+  margin: var(--space-sm) auto 0;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-md);
+  margin-top: var(--space-lg);
+}
+
+.primaryCta,
+.secondaryCta {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: var(--space-sm) var(--space-lg);
+  border-radius: var(--radius-full);
+  font-weight: 600;
+  text-decoration: none;
+  transition: filter var(--transition-fast);
+
+  &:hover {
+    filter: brightness(0.95);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-text-inverse);
+    outline-offset: 2px;
+  }
+}
+
+.primaryCta {
+  background: var(--color-background);
+  // Not `var(--color-text)` — `.banner` re-scopes that variable to white
+  // for Heading/Text, which would make this text invisible against the
+  // light background too. `--color-secondary` isn't redefined in this
+  // scope, so it reliably stays dark.
+  color: var(--color-secondary);
+}
+
+.secondaryCta {
+  background: var(--color-secondary);
+  color: var(--color-text-inverse);
+}

@@ -11,6 +11,7 @@ const IMAGE_BASE_URL =
   "https://cdn.jsdelivr.net/gh/Dynamo-Studio/Shubhkamna-Events-Images@main";
 
 interface ContactPageSeed {
+  heroEyebrow: string;
   heroHeading: string;
   heroSubhead: string;
   heroBackgroundImage: SanityImageRef;
@@ -34,6 +35,7 @@ export async function buildContactPageSeed(
   );
 
   return {
+    heroEyebrow: "5-Star Rated Indore Agency",
     heroHeading: "Let's Create Magic Together",
     heroSubhead:
       "Bespoke planning tailored to your unique vision. Our dedicated team in Chhawni, Indore is ready to bring your dream celebration to life.",

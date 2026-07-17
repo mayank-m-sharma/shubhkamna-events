@@ -19,7 +19,9 @@ export type IconName =
   | "temple"
   | "palette"
   | "music-note"
-  | "whatsapp";
+  | "whatsapp"
+  | "chat"
+  | "calendar";
 
 export type IconSize = "sm" | "md" | "lg";
 

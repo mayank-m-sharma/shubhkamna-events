@@ -200,6 +200,7 @@ export const galleryPageQuery = `*[_type == "galleryPage"][0]{
 }`;
 
 export const contactPageQuery = `*[_type == "contactPage"][0]{
+  heroEyebrow,
   heroHeading,
   heroSubhead,
   heroBackgroundImage ${imageProjection},
@@ -222,3 +223,22 @@ export const contactPageQuery = `*[_type == "contactPage"][0]{
 // (or unset) order fall back to alphabetical, matching the seed data's
 // intended display order without depending on document creation order.
 export const servicesQuery = `*[_type == "service" && defined(slug.current)] | order(order asc, title asc)${serviceProjection}`;
+
+export const servicesPageQuery = `*[_type == "servicesPage"][0]{
+  heroEyebrow,
+  heroHeading,
+  heroHeadingHighlight,
+  heroSubhead,
+  processEyebrow,
+  processHeading,
+  processSteps[]{ icon, title, description },
+  faq{
+    heading,
+    intro,
+    items[]{ question, answer }
+  },
+  ctaHeading,
+  ctaBody,
+  ctaSecondaryLabel,
+  ctaSecondaryHref
+}`;
