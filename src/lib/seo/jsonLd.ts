@@ -82,3 +82,32 @@ export function buildBreadcrumbJsonLd(
     })),
   };
 }
+
+interface ContactPageJsonLdInput {
+  url: string;
+  organizationName: string;
+  organizationAddress?: string;
+  organizationPhone?: string;
+}
+
+// Nests a LocalBusiness `mainEntity` rather than a second top-level
+// Organization block — the root layout already renders one Organization
+// JSON-LD sitewide (SHU-003); duplicating it per-page would be redundant.
+export function buildContactPageJsonLd({
+  url,
+  organizationName,
+  organizationAddress,
+  organizationPhone,
+}: ContactPageJsonLdInput): Record<string, unknown> {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    url,
+    mainEntity: {
+      "@type": "LocalBusiness",
+      name: organizationName,
+      ...(organizationAddress ? { address: organizationAddress } : {}),
+      ...(organizationPhone ? { telephone: organizationPhone } : {}),
+    },
+  };
+}

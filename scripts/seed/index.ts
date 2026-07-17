@@ -1,3 +1,4 @@
+import { buildContactPageSeed } from "./data/contactPage";
 import { footerConfigSeed } from "./data/footerConfig";
 import { buildGalleryPageSeed } from "./data/galleryPage";
 import { headerConfigSeed } from "./data/headerConfig";
@@ -60,6 +61,14 @@ async function main(): Promise<void> {
     ...galleryPageSeed,
   });
   console.warn(`galleryPage: ${galleryPageResult}`);
+
+  const contactPageSeed = await buildContactPageSeed(sanityWriteClient);
+  const contactPageResult = await upsertDocument(sanityWriteClient, {
+    _id: "contactPage",
+    _type: "contactPage",
+    ...contactPageSeed,
+  });
+  console.warn(`contactPage: ${contactPageResult}`);
 }
 
 main().catch((error: unknown) => {

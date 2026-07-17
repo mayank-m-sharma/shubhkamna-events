@@ -1,5 +1,6 @@
 import {
   buildBreadcrumbJsonLd,
+  buildContactPageJsonLd,
   buildOrganizationJsonLd,
   buildServiceJsonLd,
 } from "./jsonLd";
@@ -142,6 +143,41 @@ describe("buildBreadcrumbJsonLd", () => {
           item: "http://localhost:3000/services/weddings",
         },
       ],
+    });
+  });
+});
+
+describe("buildContactPageJsonLd", () => {
+  it("builds a schema.org ContactPage with a nested LocalBusiness mainEntity", () => {
+    const jsonLd = buildContactPageJsonLd({
+      url: "http://localhost:3000/contact",
+      organizationName: "Shubhkamna Events",
+      organizationAddress: "Chhawni, Indore, Madhya Pradesh 452001",
+      organizationPhone: "+919754455007",
+    });
+
+    expect(jsonLd).toEqual({
+      "@context": "https://schema.org",
+      "@type": "ContactPage",
+      url: "http://localhost:3000/contact",
+      mainEntity: {
+        "@type": "LocalBusiness",
+        name: "Shubhkamna Events",
+        address: "Chhawni, Indore, Madhya Pradesh 452001",
+        telephone: "+919754455007",
+      },
+    });
+  });
+
+  it("omits address/telephone from mainEntity when not given", () => {
+    const jsonLd = buildContactPageJsonLd({
+      url: "http://localhost:3000/contact",
+      organizationName: "Shubhkamna Events",
+    });
+
+    expect(jsonLd.mainEntity).toEqual({
+      "@type": "LocalBusiness",
+      name: "Shubhkamna Events",
     });
   });
 });
