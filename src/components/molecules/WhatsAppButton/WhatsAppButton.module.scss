@@ -1,0 +1,27 @@
+.button {
+  position: fixed;
+  right: var(--space-md);
+  bottom: var(--space-md);
+  z-index: var(--z-floating);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: var(--radius-full);
+  background: var(--color-whatsapp);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgb(0 0 0 / 0.2);
+  transition:
+    transform var(--transition-fast),
+    opacity var(--transition-fast);
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+}

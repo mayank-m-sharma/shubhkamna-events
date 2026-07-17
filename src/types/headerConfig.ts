@@ -14,4 +14,5 @@ export interface HeaderProps {
   navItems: NavItem[];
   ctaLabel?: string;
   ctaHref?: string;
+  whatsappNumber?: string;
 }

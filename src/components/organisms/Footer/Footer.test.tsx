@@ -80,6 +80,24 @@ describe("Footer", () => {
     expect(container.querySelector("address")).not.toBeInTheDocument();
   });
 
+  it("renders a WhatsApp link built from siteSettings' number when given", () => {
+    render(
+      <Footer columns={[]} socialLinks={[]} whatsappNumber="+919754455007" />,
+    );
+
+    expect(
+      screen.getByRole("link", { name: /Chat on WhatsApp/ }),
+    ).toHaveAttribute("href", "https://wa.me/919754455007");
+  });
+
+  it("does not render a WhatsApp link when no number is configured", () => {
+    render(<Footer columns={[]} socialLinks={[]} />);
+
+    expect(
+      screen.queryByRole("link", { name: /Chat on WhatsApp/ }),
+    ).not.toBeInTheDocument();
+  });
+
   it("renders the social links list", () => {
     render(<Footer columns={[]} socialLinks={socialLinks} />);
 

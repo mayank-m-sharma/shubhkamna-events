@@ -45,4 +45,13 @@
   // per-brand customization surface.
   --transition-fast: 150ms ease;
   --transition-base: 250ms ease;
+
+  // Below the skip-link and Gallery lightbox (both fixed at 100) so a
+  // modal overlay always layers above the floating WhatsApp button.
+  --z-floating: 50;
+
+  // WhatsApp's own brand green — a universally recognized action-color
+  // convention (like the platform's real floating button), not part of
+  // this site's own CMS-editable palette above.
+  --color-whatsapp: #25d366;
 }

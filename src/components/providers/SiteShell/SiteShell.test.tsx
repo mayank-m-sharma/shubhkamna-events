@@ -82,6 +82,29 @@ describe("SiteShell", () => {
     expect(screen.getByText("Shubhkamna Events")).toBeInTheDocument();
   });
 
+  it("renders the floating WhatsApp button when siteSettings has a number", async () => {
+    mockGetSiteSettings.mockResolvedValueOnce({
+      ...fallbackSiteSettings,
+      whatsappNumber: "+919754455007",
+    });
+
+    const ui = await SiteShell({ children: <p>Page content</p> });
+    render(ui);
+
+    expect(
+      screen.getByRole("link", { name: "Chat on WhatsApp" }),
+    ).toHaveAttribute("href", "https://wa.me/919754455007");
+  });
+
+  it("renders no floating WhatsApp button when siteSettings has no number", async () => {
+    const ui = await SiteShell({ children: <p>Page content</p> });
+    render(ui);
+
+    expect(
+      screen.queryByRole("link", { name: "Chat on WhatsApp" }),
+    ).not.toBeInTheDocument();
+  });
+
   it("has no axe violations", async () => {
     const ui = await SiteShell({ children: <p>Page content</p> });
     const { container } = render(ui);
