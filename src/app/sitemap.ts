@@ -19,6 +19,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "weekly",
       priority: 0.8,
     },
+    {
+      url: new URL("/gallery", siteUrl).toString(),
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.7,
+    },
     ...slugs.map((slug) => ({
       url: new URL(`/services/${slug}`, siteUrl).toString(),
       lastModified: new Date(),

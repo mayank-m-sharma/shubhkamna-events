@@ -2,8 +2,10 @@ import type { SchemaTypeDefinition } from "sanity";
 
 import { enquiry } from "./enquiry";
 import { footerConfig } from "./footerConfig";
+import { galleryPage } from "./galleryPage";
 import { headerConfig } from "./headerConfig";
 import { homePage } from "./homePage";
+import { galleryImage } from "./objects/galleryImage";
 import { contactSection } from "./sections/contactSection";
 import { faqSection } from "./sections/faqSection";
 import { gallerySection } from "./sections/gallerySection";
@@ -29,7 +31,9 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     contactSection,
     faqSection,
     statsSection,
+    galleryImage,
     enquiry,
     service,
+    galleryPage,
   ],
 };
