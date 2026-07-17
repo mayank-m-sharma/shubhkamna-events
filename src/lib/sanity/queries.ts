@@ -172,6 +172,17 @@ export const serviceSlugsQuery = `*[_type == "service" && defined(slug.current)]
   "slug": slug.current
 }`;
 
+export const galleryPageQuery = `*[_type == "galleryPage"][0]{
+  heading,
+  intro,
+  images[]{
+    image ${imageProjection},
+    alt,
+    caption,
+    category
+  }
+}`;
+
 // Sorted so an explicit editor-set `order` wins; services sharing the same
 // (or unset) order fall back to alphabetical, matching the seed data's
 // intended display order without depending on document creation order.

@@ -1,4 +1,5 @@
 import { footerConfigSeed } from "./data/footerConfig";
+import { buildGalleryPageSeed } from "./data/galleryPage";
 import { headerConfigSeed } from "./data/headerConfig";
 import { buildHomePageSeed } from "./data/homePage";
 import { buildServiceSeeds } from "./data/service";
@@ -51,6 +52,14 @@ async function main(): Promise<void> {
     });
     console.warn(`service (${serviceSeed.slug.current}): ${serviceResult}`);
   }
+
+  const galleryPageSeed = await buildGalleryPageSeed(sanityWriteClient);
+  const galleryPageResult = await upsertDocument(sanityWriteClient, {
+    _id: "galleryPage",
+    _type: "galleryPage",
+    ...galleryPageSeed,
+  });
+  console.warn(`galleryPage: ${galleryPageResult}`);
 }
 
 main().catch((error: unknown) => {
