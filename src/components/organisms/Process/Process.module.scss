@@ -1,0 +1,86 @@
+@use "../../../styles/mixins";
+
+.process {
+  @include mixins.container;
+  padding-block: var(--space-xl);
+}
+
+.card {
+  background: var(--color-secondary);
+  border-radius: var(--radius-md);
+  padding: var(--space-xl) var(--space-lg);
+  // Re-scopes the color tokens Heading/Text already read, rather than
+  // fighting their own `color: var(--color-text)` declarations with a
+  // separate override class — those atoms would otherwise always win
+  // since they set color directly, not by inheritance.
+  --color-text: var(--color-text-inverse);
+  --color-text-muted: rgb(255 255 255 / 80%);
+
+  @include mixins.from(md) {
+    padding: var(--space-2xl);
+  }
+}
+
+.header {
+  text-align: center;
+  margin-bottom: var(--space-xl);
+}
+
+.eyebrow {
+  margin: 0 0 var(--space-xs);
+  color: var(--color-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  font-size: var(--font-size-sm);
+}
+
+.steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-lg);
+  text-align: center;
+
+  @include mixins.from(sm) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include mixins.from(md) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.iconWrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: var(--radius-sm);
+  background: rgb(255 255 255 / 12%);
+  margin-bottom: var(--space-xs);
+}
+
+.stepNumber {
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  color: var(--color-accent);
+}
+
+.stepTitle {
+  margin: 0;
+}
+
+.stepDescription {
+  max-width: 24ch;
+}

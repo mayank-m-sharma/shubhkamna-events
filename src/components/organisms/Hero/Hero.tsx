@@ -4,29 +4,13 @@ import { Button } from "@/components/atoms/Button";
 import { Heading } from "@/components/atoms/Heading";
 import { Icon } from "@/components/atoms/Icon";
 import { Text } from "@/components/atoms/Text";
+import { splitHeadline } from "@/lib/utils/splitHeadline";
 import type { HeroProps } from "@/types/hero";
 
 import styles from "./Hero.module.scss";
 import { HeroMedia } from "./HeroMedia";
 
 const HERO_HEADLINE_ID = "hero-headline";
-
-// Splits off the CMS-controlled trailing substring to highlight (e.g.
-// "Our Magic." within "Your Vision, Our Magic.") rather than guessing
-// which word(s) to emphasize in code — see heroSectionSchema's
-// `headlineHighlight` field.
-function splitHeadline(
-  headline: string,
-  highlight?: string,
-): { rest: string; highlight?: string } {
-  if (highlight && headline.endsWith(highlight)) {
-    return {
-      rest: headline.slice(0, headline.length - highlight.length),
-      highlight,
-    };
-  }
-  return { rest: headline, highlight: undefined };
-}
 
 export function Hero({
   headline,

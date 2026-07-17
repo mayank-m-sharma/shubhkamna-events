@@ -16,6 +16,7 @@ import { servicesSection } from "./sections/servicesSection";
 import { statsSection } from "./sections/statsSection";
 import { testimonialsSection } from "./sections/testimonialsSection";
 import { service } from "./service";
+import { servicesPage } from "./servicesPage";
 import { siteSettings } from "./siteSettings";
 import { siteTheme } from "./siteTheme";
 
@@ -39,5 +40,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     service,
     galleryPage,
     contactPage,
+    servicesPage,
   ],
 };
