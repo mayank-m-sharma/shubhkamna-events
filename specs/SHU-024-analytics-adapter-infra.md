@@ -4,8 +4,9 @@
 
 **Status:**
 
-- [x] Not started
+- [ ] Not started
 - [ ] Completed
+- [x] deferred - **Not to be picked up**
 
 **Explicitly deferred implementation** — this ticket builds the seam only;
 actual GA4/Mixpanel wiring happens in a later, separate ticket once

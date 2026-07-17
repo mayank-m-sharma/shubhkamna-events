@@ -7,6 +7,8 @@
 - [x] Not started
 - [ ] Completed
 
+** Parent Epic:** [[SHU-034]] — SEO Hardening
+
 ## User story
 
 As the site owner, I want rich search results (address, ratings-ready

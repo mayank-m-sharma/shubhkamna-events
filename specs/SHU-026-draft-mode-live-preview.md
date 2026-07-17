@@ -2,6 +2,8 @@
 
 **Wave:** 6 (CMS editor experience) · **Depends on:** [[SHU-015]], [[SHU-025]]
 
+** Parent Epic:** [[SHU-036]] — Studio Editor Experience
+
 **Status:**
 
 - [x] Not started

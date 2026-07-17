@@ -7,6 +7,8 @@
 - [x] Not started
 - [ ] Completed
 
+** Parent Epic:** [[SHU-035]] — Performance & Accessibility Hardening
+
 This is **not** where accessibility/performance/SEO get addressed for the
 first time — every ticket since [[SHU-001]] is already required to meet the
 [Definition of Done](./DEFINITION-OF-DONE.md) (a11y, CWV, SEO baseline) as

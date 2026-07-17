@@ -2,6 +2,8 @@
 
 **Wave:** 6 (CMS editor experience) · **Depends on:** all schema tickets ([[SHU-002]]–[[SHU-017]])
 
+** Parent Epic:** [[SHU-036]] — Studio Editor Experience
+
 **Status:**
 
 - [x] Not started
