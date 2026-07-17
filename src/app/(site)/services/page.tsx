@@ -5,7 +5,7 @@ import { CtaBanner } from "@/components/organisms/CtaBanner";
 import { FAQ } from "@/components/organisms/FAQ";
 import { PageHero } from "@/components/organisms/PageHero";
 import { Process } from "@/components/organisms/Process";
-import { Services } from "@/components/organisms/Services";
+import { ServiceCatalog } from "@/components/organisms/ServiceCatalog";
 import { getServices } from "@/lib/sanity/getServices";
 import { getServicesPage } from "@/lib/sanity/getServicesPage";
 import { getSiteSettings } from "@/lib/sanity/getSiteSettings";
@@ -41,14 +41,7 @@ export default async function ServicesIndexPage(): Promise<ReactNode> {
           "From intimate celebrations to large-scale professional events, explore our full range of event planning services."
         }
       />
-      <Services
-        items={services.map((service) => ({
-          icon: service.icon,
-          title: service.title,
-          description: service.description,
-          href: `/services/${service.slug}`,
-        }))}
-      />
+      <ServiceCatalog services={services} />
       {servicesPage ? (
         <Process
           eyebrow={servicesPage.processEyebrow}
