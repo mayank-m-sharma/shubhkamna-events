@@ -1,0 +1,20 @@
+@use "../../../styles/mixins";
+
+.catalog {
+  @include mixins.container;
+  padding-block: var(--space-2xl);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-lg);
+
+  @include mixins.from(sm) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include mixins.from(lg) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

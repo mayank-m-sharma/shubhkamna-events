@@ -1,0 +1,140 @@
+@use "../../../styles/mixins";
+
+.card {
+  display: flex;
+  flex-direction: column;
+  background: var(--color-background);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: 0 4px 20px -8px rgb(0 0 0 / 15%);
+  transition: transform var(--transition-base);
+
+  &:hover {
+    transform: translateY(-4px);
+  }
+}
+
+.mediaLink {
+  display: block;
+  text-decoration: none;
+
+  &:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: -2px;
+  }
+}
+
+.imageWrapper {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  width: 100%;
+}
+
+.media {
+  object-fit: cover;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 40%, rgb(0 0 0 / 0.75) 100%);
+}
+
+.badge {
+  position: absolute;
+  left: var(--space-md);
+  bottom: var(--space-md);
+  right: var(--space-md);
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  // Re-scopes the color token Heading already reads, rather than fighting
+  // its own `color: var(--color-text)` declaration with a separate
+  // override class — it would otherwise always win since it sets color
+  // directly, not by inheritance.
+  --color-text: var(--color-text-inverse);
+}
+
+.badgeIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  flex-shrink: 0;
+  border-radius: var(--radius-sm);
+  background: rgb(255 255 255 / 20%);
+  color: var(--color-text-inverse);
+}
+
+.badgeTitle {
+  margin: 0;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  padding: var(--space-lg);
+  flex: 1;
+}
+
+.description {
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+.features {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  flex: 1;
+}
+
+.feature {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.checkIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.25rem;
+  height: 1.25rem;
+  flex-shrink: 0;
+  border-radius: var(--radius-full);
+  background: color-mix(in srgb, var(--color-primary) 12%, transparent);
+  color: var(--color-primary);
+}
+
+.featureText {
+  margin: 0;
+  font-size: var(--font-size-sm);
+}
+
+.cta {
+  display: block;
+  text-align: center;
+  margin-top: var(--space-sm);
+  padding: var(--space-sm) var(--space-lg);
+  border-radius: var(--radius-sm);
+  background: var(--color-secondary);
+  color: var(--color-text-inverse);
+  font-weight: 600;
+  text-decoration: none;
+  transition: filter var(--transition-fast);
+
+  &:hover {
+    filter: brightness(1.15);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+}
