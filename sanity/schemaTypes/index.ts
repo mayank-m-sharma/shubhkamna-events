@@ -7,6 +7,7 @@ import { galleryPage } from "./galleryPage";
 import { headerConfig } from "./headerConfig";
 import { homePage } from "./homePage";
 import { galleryImage } from "./objects/galleryImage";
+import { aboutSection } from "./sections/aboutSection";
 import { contactSection } from "./sections/contactSection";
 import { faqSection } from "./sections/faqSection";
 import { gallerySection } from "./sections/gallerySection";
@@ -32,6 +33,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     contactSection,
     faqSection,
     statsSection,
+    aboutSection,
     galleryImage,
     enquiry,
     service,

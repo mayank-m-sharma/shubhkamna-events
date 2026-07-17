@@ -12,6 +12,13 @@ export const heroSection = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
+      name: "headlineHighlight",
+      title: "Headline gradient highlight",
+      description:
+        'Must exactly match the trailing portion of the headline to highlight, e.g. "Our Magic." within "Your Vision, Our Magic." Leave empty for no highlight.',
+      type: "string",
+    }),
+    defineField({
       name: "subhead",
       title: "Subhead",
       type: "text",
@@ -59,6 +66,20 @@ export const heroSection = defineType({
       name: "secondaryCtaHref",
       title: "Secondary button link",
       type: "string",
+    }),
+    defineField({
+      name: "secondaryImage",
+      title: "Secondary accent image",
+      description:
+        "Optional smaller image that overlaps the main hero image for a richer, more layered look. Leave empty to hide it.",
+      type: "image",
+      options: { hotspot: true },
+    }),
+    defineField({
+      name: "secondaryImageAlt",
+      title: "Secondary image alt text",
+      type: "string",
+      hidden: ({ parent }) => !parent?.secondaryImage,
     }),
   ],
   preview: {

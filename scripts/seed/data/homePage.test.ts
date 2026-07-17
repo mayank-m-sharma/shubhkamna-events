@@ -29,6 +29,7 @@ describe("buildHomePageSeed", () => {
     expect(seed.sections.map((section) => section._type)).toEqual([
       "heroSection",
       "statsSection",
+      "aboutSection",
       "servicesSection",
       "gallerySection",
       "testimonialsSection",
@@ -64,6 +65,8 @@ describe("buildHomePageSeed", () => {
     expect(hero.backgroundImageAlt).toBe(
       "Shubhkamna Events luxury wedding planning Indore",
     );
+    expect(hero.headlineHighlight).toBe("Our Magic.");
+    expect(hero.secondaryImageAlt).toBe("Shubhkamna Events decor setup");
   });
 
   it("uploads the hero background image and references the resulting asset", async () => {
@@ -87,11 +90,28 @@ describe("buildHomePageSeed", () => {
     });
   });
 
+  it("carries the reference site's real about content from the SHU-000 audit", async () => {
+    const seed = await buildHomePageSeed(
+      mockClient("image-hero-800x1000-webp"),
+    );
+    const [, , about] = seed.sections;
+
+    expect(about.eyebrow).toBe("About Shubhkamna Events");
+    expect(about.heading).toBe("Elite Event Planning Experts in Indore");
+    expect(about.checklist).toEqual([
+      "Corporate & Conference coordination",
+      "Theme party & Decor design",
+      "Destination Wedding planning",
+    ]);
+    expect(about.ctaLabel).toBe("Contact Our Team");
+    expect(about.ctaHref).toBe("/contact");
+  });
+
   it("carries the reference site's real services catalog from the SHU-000 audit", async () => {
     const seed = await buildHomePageSeed(
       mockClient("image-hero-800x1000-webp"),
     );
-    const [, , services] = seed.sections;
+    const [, , , services] = seed.sections;
 
     expect(services.intro).toBe(
       "From personal celebrations to large-scale professional events, we provide end-to-end management services.",
@@ -116,7 +136,7 @@ describe("buildHomePageSeed", () => {
     const seed = await buildHomePageSeed(
       mockClient("image-hero-800x1000-webp"),
     );
-    const [, , , gallery] = seed.sections;
+    const [, , , , gallery] = seed.sections;
 
     expect(gallery.intro).toBe(
       "Take a look at the stunning events we have brought to life across Indore.",
@@ -136,7 +156,7 @@ describe("buildHomePageSeed", () => {
     const seed = await buildHomePageSeed(
       mockClient("image-hero-800x1000-webp"),
     );
-    const [, , , , testimonials] = seed.sections;
+    const [, , , , , testimonials] = seed.sections;
 
     expect(testimonials.intro).toBe(
       "We take pride in our 5-star reputation. Here is what people are saying about Shubhkamna Events.",
@@ -154,7 +174,7 @@ describe("buildHomePageSeed", () => {
     const seed = await buildHomePageSeed(
       mockClient("image-hero-800x1000-webp"),
     );
-    const [, , , , , contact] = seed.sections;
+    const [, , , , , , contact] = seed.sections;
 
     expect(contact.variant).toBe("banner");
     expect(contact.intro).toBe(
@@ -166,7 +186,7 @@ describe("buildHomePageSeed", () => {
     const seed = await buildHomePageSeed(
       mockClient("image-hero-800x1000-webp"),
     );
-    const [, , services, gallery, testimonials, contact] = seed.sections;
+    const [, , , services, gallery, testimonials, contact] = seed.sections;
 
     expect([
       services.heading,

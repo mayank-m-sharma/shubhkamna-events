@@ -30,6 +30,9 @@ jest.mock("@/components/organisms/ContactSection", () => ({
 jest.mock("@/components/organisms/Stats", () => ({
   Stats: () => <div data-testid="stats" />,
 }));
+jest.mock("@/components/organisms/About", () => ({
+  About: () => <div data-testid="about" />,
+}));
 
 const extras = {
   reviewRating: 5,
@@ -42,12 +45,15 @@ const extras = {
 const heroSection: HomePageSection = {
   _type: "heroSection",
   headline: "Hi",
+  headlineHighlight: undefined,
   subhead: undefined,
   backgroundImage: undefined,
   backgroundImageAlt: undefined,
   backgroundVideoUrl: undefined,
   primaryCtaLabel: "Go",
   primaryCtaHref: "/contact",
+  secondaryImage: undefined,
+  secondaryImageAlt: undefined,
   secondaryCtaLabel: undefined,
   secondaryCtaHref: undefined,
 };
@@ -91,6 +97,28 @@ const statsSection: HomePageSection = {
   items: [],
 };
 
+const aboutSection: HomePageSection = {
+  _type: "aboutSection",
+  eyebrow: undefined,
+  heading: "About",
+  bodyFirst: "Body",
+  bodySecond: undefined,
+  checklist: [],
+  ctaLabel: undefined,
+  ctaHref: undefined,
+  imageFirst: {
+    asset: {
+      _id: "image-abc-800x1000-jpg",
+      url: "https://cdn.sanity.io/images/proj/ds/abc-800x1000.jpg",
+      metadata: { dimensions: { width: 800, height: 1000 } },
+    },
+    hotspot: undefined,
+  },
+  imageFirstAlt: "About image",
+  imageSecond: undefined,
+  imageSecondAlt: undefined,
+};
+
 describe("PageBuilder", () => {
   afterEach(() => {
     jest.restoreAllMocks();
@@ -102,6 +130,7 @@ describe("PageBuilder", () => {
         sections={[
           heroSection,
           statsSection,
+          aboutSection,
           servicesSection,
           gallerySection,
           testimonialsSection,
@@ -117,6 +146,7 @@ describe("PageBuilder", () => {
     expect(ids).toEqual([
       "hero",
       "stats",
+      "about",
       "services",
       "gallery",
       "testimonials",

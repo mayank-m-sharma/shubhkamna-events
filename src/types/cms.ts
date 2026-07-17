@@ -13,4 +13,5 @@ export type {
   TestimonialsSection,
   ContactSection,
   StatsSection,
+  AboutSection,
 } from "@/lib/validations/homePage.schema";

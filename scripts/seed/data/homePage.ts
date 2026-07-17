@@ -20,6 +20,7 @@ const IMAGE_BASE_URL =
 interface HeroSectionSeed {
   _type: "heroSection";
   headline: string;
+  headlineHighlight: string;
   subhead: string;
   backgroundImage: SanityImageRef;
   backgroundImageAlt: string;
@@ -27,6 +28,23 @@ interface HeroSectionSeed {
   primaryCtaHref: string;
   secondaryCtaLabel: string;
   secondaryCtaHref: string;
+  secondaryImage: SanityImageRef;
+  secondaryImageAlt: string;
+}
+
+interface AboutSectionSeed {
+  _type: "aboutSection";
+  eyebrow: string;
+  heading: string;
+  bodyFirst: string;
+  bodySecond: string;
+  checklist: string[];
+  ctaLabel: string;
+  ctaHref: string;
+  imageFirst: SanityImageRef;
+  imageFirstAlt: string;
+  imageSecond: SanityImageRef;
+  imageSecondAlt: string;
 }
 
 interface GalleryImageSeed {
@@ -49,6 +67,7 @@ interface HomePageSeed {
   sections: [
     HeroSectionSeed,
     StatsSection,
+    AboutSectionSeed,
     ServicesSection,
     GallerySectionSeed,
     TestimonialsSection,
@@ -58,10 +77,12 @@ interface HomePageSeed {
 
 function buildHeroSectionSeed(
   backgroundImage: SanityImageRef,
+  secondaryImage: SanityImageRef,
 ): HeroSectionSeed {
   return {
     _type: "heroSection",
     headline: "Your Vision, Our Magic.",
+    headlineHighlight: "Our Magic.",
     subhead:
       "Indore's 5-star premier event planner. From grand weddings to high-profile corporate conferences, we handle everything 24/7.",
     backgroundImage,
@@ -70,6 +91,8 @@ function buildHeroSectionSeed(
     primaryCtaHref: "/contact",
     secondaryCtaLabel: "View Portfolio",
     secondaryCtaHref: "/gallery",
+    secondaryImage,
+    secondaryImageAlt: "Shubhkamna Events decor setup",
   };
 }
 
@@ -130,6 +153,32 @@ const statsSectionSeed: StatsSection = {
     { value: "1000+", label: "Happy Events" },
   ],
 };
+
+function buildAboutSectionSeed(
+  imageFirst: SanityImageRef,
+  imageSecond: SanityImageRef,
+): AboutSectionSeed {
+  return {
+    _type: "aboutSection",
+    eyebrow: "About Shubhkamna Events",
+    heading: "Elite Event Planning Experts in Indore",
+    bodyFirst:
+      "Based in Chhawni, Indore, Shubhkamna Events is dedicated to creating seamless and visually stunning experiences. We manage everything from corporate conferences to grand weddings with unmatched precision.",
+    bodySecond:
+      "Our team believes in a helpful nature and clear communication. With 24/7 availability, we ensure your special day—be it an anniversary, baby shower, or religious event—is managed to perfection.",
+    checklist: [
+      "Corporate & Conference coordination",
+      "Theme party & Decor design",
+      "Destination Wedding planning",
+    ],
+    ctaLabel: "Contact Our Team",
+    ctaHref: "/contact",
+    imageFirst,
+    imageFirstAlt: "Shubhkamna Events wedding decoration setup",
+    imageSecond,
+    imageSecondAlt: "Shubhkamna Events wedding planning Indore",
+  };
+}
 
 interface GalleryImages {
   v1: SanityImageRef;
@@ -239,22 +288,30 @@ const contactSectionSeed: ContactSection = {
 };
 
 // Section order and content match the reference site's homepage flow
-// (SHU-000's audit §2.3: hero, stats, services, gallery, testimonials,
-// contact — the stats strip sits between hero and about on the reference;
-// there's no about section on this homepage, so it follows hero directly).
+// (SHU-000's audit §2.3: hero, stats, about, services, gallery,
+// testimonials, contact).
 export async function buildHomePageSeed(
   client: SanityClient,
 ): Promise<HomePageSeed> {
-  const [v1, v3, v5, v6, v7] = await Promise.all(
-    ["v1.webp", "v3.webp", "v5.webp", "v6.webp", "v7.webp"].map((filename) =>
+  const [v1, v2, v3, v4, v5, v6, v7] = await Promise.all(
+    [
+      "v1.webp",
+      "v2.webp",
+      "v3.webp",
+      "v4.webp",
+      "v5.webp",
+      "v6.webp",
+      "v7.webp",
+    ].map((filename) =>
       uploadImageIfNeeded(client, `${IMAGE_BASE_URL}/${filename}`, filename),
     ),
   );
 
   return {
     sections: [
-      buildHeroSectionSeed(v1!),
+      buildHeroSectionSeed(v1!, v2!),
       statsSectionSeed,
+      buildAboutSectionSeed(v3!, v4!),
       servicesSectionSeed,
       buildGallerySectionSeed({ v1: v1!, v3: v3!, v5: v5!, v6: v6!, v7: v7! }),
       testimonialsSectionSeed,

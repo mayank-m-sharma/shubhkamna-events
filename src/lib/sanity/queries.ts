@@ -92,6 +92,7 @@ export const homePageQuery = `*[_type == "homePage"][0]{
     _type,
     _type == "heroSection" => {
       headline,
+      headlineHighlight,
       subhead,
       backgroundImage ${imageProjection},
       backgroundImageAlt,
@@ -99,7 +100,9 @@ export const homePageQuery = `*[_type == "homePage"][0]{
       primaryCtaLabel,
       primaryCtaHref,
       secondaryCtaLabel,
-      secondaryCtaHref
+      secondaryCtaHref,
+      secondaryImage ${imageProjection},
+      secondaryImageAlt
     },
     _type == "servicesSection" => {
       heading,
@@ -140,6 +143,19 @@ export const homePageQuery = `*[_type == "homePage"][0]{
     _type == "statsSection" => {
       heading,
       items[]{ value, label }
+    },
+    _type == "aboutSection" => {
+      eyebrow,
+      heading,
+      bodyFirst,
+      bodySecond,
+      checklist,
+      ctaLabel,
+      ctaHref,
+      imageFirst ${imageProjection},
+      imageFirstAlt,
+      imageSecond ${imageProjection},
+      imageSecondAlt
     }
   }
 }`;
