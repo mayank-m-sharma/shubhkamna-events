@@ -1,0 +1,49 @@
+@use "../../../styles/mixins";
+
+.panel {
+  @include mixins.container;
+  padding-block: var(--space-xl);
+}
+
+.intro {
+  color: var(--color-text-muted);
+  max-width: 60ch;
+  margin-top: var(--space-sm);
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-md);
+  margin-top: var(--space-lg);
+
+  @include mixins.from(sm) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.office {
+  margin-top: var(--space-xl);
+}
+
+.areas {
+  margin-top: var(--space-xl);
+}
+
+.tagList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  list-style: none;
+  margin: var(--space-sm) 0 0;
+  padding: 0;
+}
+
+.tag {
+  padding: var(--space-xs) var(--space-md);
+  border-radius: var(--radius-full);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}

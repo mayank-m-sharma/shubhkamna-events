@@ -183,6 +183,25 @@ export const galleryPageQuery = `*[_type == "galleryPage"][0]{
   }
 }`;
 
+export const contactPageQuery = `*[_type == "contactPage"][0]{
+  heroHeading,
+  heroSubhead,
+  heroBackgroundImage ${imageProjection},
+  contact{
+    _type,
+    variant,
+    heading,
+    intro,
+    successMessage
+  },
+  areasServed,
+  faq{
+    heading,
+    intro,
+    items[]{ question, answer }
+  }
+}`;
+
 // Sorted so an explicit editor-set `order` wins; services sharing the same
 // (or unset) order fall back to alphabetical, matching the seed data's
 // intended display order without depending on document creation order.
