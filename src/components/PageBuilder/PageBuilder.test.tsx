@@ -27,6 +27,9 @@ jest.mock("@/components/organisms/ContactSection", () => ({
     <div data-testid="contactSection">{props.phone}</div>
   ),
 }));
+jest.mock("@/components/organisms/Stats", () => ({
+  Stats: () => <div data-testid="stats" />,
+}));
 
 const extras = {
   reviewRating: 5,
@@ -82,6 +85,12 @@ const contactSection: HomePageSection = {
   successMessage: undefined,
 };
 
+const statsSection: HomePageSection = {
+  _type: "statsSection",
+  heading: undefined,
+  items: [],
+};
+
 describe("PageBuilder", () => {
   afterEach(() => {
     jest.restoreAllMocks();
@@ -92,6 +101,7 @@ describe("PageBuilder", () => {
       <PageBuilder
         sections={[
           heroSection,
+          statsSection,
           servicesSection,
           gallerySection,
           testimonialsSection,
@@ -106,6 +116,7 @@ describe("PageBuilder", () => {
     );
     expect(ids).toEqual([
       "hero",
+      "stats",
       "services",
       "gallery",
       "testimonials",

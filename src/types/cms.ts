@@ -12,4 +12,5 @@ export type {
   GallerySection,
   TestimonialsSection,
   ContactSection,
+  StatsSection,
 } from "@/lib/validations/homePage.schema";

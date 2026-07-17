@@ -3,6 +3,7 @@ import type { SanityClient } from "@sanity/client";
 import type {
   ContactSection,
   ServicesSection,
+  StatsSection,
   TestimonialsSection,
 } from "@/lib/validations/homePage.schema";
 
@@ -47,6 +48,7 @@ interface GallerySectionSeed {
 interface HomePageSeed {
   sections: [
     HeroSectionSeed,
+    StatsSection,
     ServicesSection,
     GallerySectionSeed,
     TestimonialsSection,
@@ -109,6 +111,23 @@ const servicesSectionSeed: ServicesSection = {
         "Destination wedding planning, religious ceremonies, emcee & DJ, professional lighting services.",
       href: "/services/special-events",
     },
+  ],
+};
+
+// Sourced from docs/reference-site-audit.md §2.3/§2.5/§4 item 2b — repeated
+// on both the reference's homepage (between hero and about) and its
+// Portfolio page. Generic value/label pairs, not literally bound to
+// siteSettings' reviewRating/reviewCount at render time (those stay the
+// single source of truth for the Hero badge and Testimonials link
+// specifically; this section's content is editor-controlled separately).
+const statsSectionSeed: StatsSection = {
+  _type: "statsSection",
+  heading: undefined,
+  items: [
+    { value: "50+", label: "Verified Reviews" },
+    { value: "5.0★", label: "Google Rating" },
+    { value: "24/7", label: "Open All Days" },
+    { value: "1000+", label: "Happy Events" },
   ],
 };
 
@@ -220,7 +239,9 @@ const contactSectionSeed: ContactSection = {
 };
 
 // Section order and content match the reference site's homepage flow
-// (SHU-000's audit §2.3: hero, services, gallery, testimonials, contact).
+// (SHU-000's audit §2.3: hero, stats, services, gallery, testimonials,
+// contact — the stats strip sits between hero and about on the reference;
+// there's no about section on this homepage, so it follows hero directly).
 export async function buildHomePageSeed(
   client: SanityClient,
 ): Promise<HomePageSeed> {
@@ -233,6 +254,7 @@ export async function buildHomePageSeed(
   return {
     sections: [
       buildHeroSectionSeed(v1!),
+      statsSectionSeed,
       servicesSectionSeed,
       buildGallerySectionSeed({ v1: v1!, v3: v3!, v5: v5!, v6: v6!, v7: v7! }),
       testimonialsSectionSeed,

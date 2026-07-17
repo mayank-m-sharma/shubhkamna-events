@@ -136,6 +136,10 @@ export const homePageQuery = `*[_type == "homePage"][0]{
       heading,
       intro,
       successMessage
+    },
+    _type == "statsSection" => {
+      heading,
+      items[]{ value, label }
     }
   }
 }`;
