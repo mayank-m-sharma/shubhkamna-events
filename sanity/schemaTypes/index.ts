@@ -5,6 +5,7 @@ import { footerConfig } from "./footerConfig";
 import { headerConfig } from "./headerConfig";
 import { homePage } from "./homePage";
 import { contactSection } from "./sections/contactSection";
+import { faqSection } from "./sections/faqSection";
 import { gallerySection } from "./sections/gallerySection";
 import { heroSection } from "./sections/heroSection";
 import { servicesSection } from "./sections/servicesSection";
@@ -25,6 +26,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     gallerySection,
     testimonialsSection,
     contactSection,
+    faqSection,
     enquiry,
     service,
   ],

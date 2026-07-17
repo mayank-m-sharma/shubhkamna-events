@@ -1,0 +1,59 @@
+@use "../../../styles/mixins";
+
+.faq {
+  @include mixins.container;
+  padding-block: var(--space-2xl);
+}
+
+.intro {
+  color: var(--color-text-muted);
+  max-width: 60ch;
+  margin-top: var(--space-sm);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  margin-top: var(--space-xl);
+  border-top: 1px solid var(--color-border);
+}
+
+.item {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.question {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  width: 100%;
+  padding: var(--space-md) 0;
+  background: transparent;
+  border: none;
+  text-align: left;
+  font-family: var(--font-heading);
+  font-size: var(--font-size-md);
+  font-weight: 600;
+  color: var(--color-text);
+  cursor: pointer;
+
+  &:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+}
+
+.chevron {
+  flex-shrink: 0;
+  transition: transform var(--transition-fast);
+
+  &.open {
+    transform: rotate(180deg);
+  }
+}
+
+.answer {
+  padding-bottom: var(--space-md);
+  color: var(--color-text-muted);
+}
