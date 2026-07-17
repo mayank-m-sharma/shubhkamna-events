@@ -16,6 +16,7 @@ export const homePage = defineType({
       of: [
         defineArrayMember({ type: "heroSection" }),
         defineArrayMember({ type: "statsSection" }),
+        defineArrayMember({ type: "aboutSection" }),
         defineArrayMember({ type: "servicesSection" }),
         defineArrayMember({ type: "gallerySection" }),
         defineArrayMember({ type: "testimonialsSection" }),

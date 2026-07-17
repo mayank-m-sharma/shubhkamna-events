@@ -112,15 +112,60 @@ describe("Hero", () => {
     expect(screen.queryByText(/Google Rating/)).not.toBeInTheDocument();
   });
 
+  it("splits off the matching trailing highlight into its own span, keeping the full text as the accessible name", () => {
+    render(<Hero {...baseProps} headlineHighlight="Our Magic." />);
+
+    const heading = screen.getByRole("heading", {
+      level: 1,
+      name: "Your Vision, Our Magic.",
+    });
+    expect(heading.querySelector("span")).toHaveTextContent("Our Magic.");
+  });
+
+  it("renders the headline plainly when the highlight doesn't match the end of the headline", () => {
+    render(<Hero {...baseProps} headlineHighlight="Nonexistent" />);
+
+    const heading = screen.getByRole("heading", { level: 1 });
+    expect(heading.querySelector("span")).not.toBeInTheDocument();
+    expect(heading).toHaveTextContent("Your Vision, Our Magic.");
+  });
+
+  it("renders the secondary accent image only when a background image is also set", () => {
+    const { rerender } = render(
+      <Hero
+        {...baseProps}
+        backgroundImage={mockImage}
+        secondaryImage={mockImage}
+        secondaryImageAlt="Shubhkamna Events decor setup"
+      />,
+    );
+    expect(
+      screen.getByAltText("Shubhkamna Events decor setup"),
+    ).toBeInTheDocument();
+
+    rerender(
+      <Hero
+        {...baseProps}
+        secondaryImage={mockImage}
+        secondaryImageAlt="Shubhkamna Events decor setup"
+      />,
+    );
+    expect(
+      screen.queryByAltText("Shubhkamna Events decor setup"),
+    ).not.toBeInTheDocument();
+  });
+
   it("has no axe violations", async () => {
     const { container } = render(
       <Hero
         {...baseProps}
+        headlineHighlight="Our Magic."
         subhead="Indore's 5-star premier event planner."
         backgroundImage={mockImage}
         backgroundImageAlt="Shubhkamna Events luxury wedding planning Indore"
         secondaryCtaLabel="View Portfolio"
         secondaryCtaHref="/gallery"
+        secondaryImage={mockImage}
         reviewRating={5}
         reviewCount={50}
       />,

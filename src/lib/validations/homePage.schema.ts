@@ -12,6 +12,11 @@ import { optionalNullable } from "@/lib/validations/zodHelpers";
 export const heroSectionSchema = z.object({
   _type: z.literal("heroSection"),
   headline: z.string().min(1),
+  // Editor-controlled trailing substring of `headline` to render with a
+  // gradient accent (e.g. "Our Magic." within "Your Vision, Our Magic.") —
+  // matches the reference site's treatment (SHU-000's audit §2.3) without
+  // the component guessing which word(s) to emphasize.
+  headlineHighlight: optionalNullable(z.string()),
   subhead: optionalNullable(z.string()),
   backgroundImage: optionalNullable(sanityImageSchema),
   backgroundImageAlt: optionalNullable(z.string()),
@@ -23,6 +28,13 @@ export const heroSectionSchema = z.object({
   primaryCtaHref: z.string().min(1),
   secondaryCtaLabel: optionalNullable(z.string()),
   secondaryCtaHref: optionalNullable(z.string()),
+  // Optional smaller accent image overlapping the main hero image — matches
+  // the reference site's richer hero treatment (SHU-000's audit §2.3/§4:
+  // "a floating stat badge and secondary accent image, not just one
+  // background image"). Purely decorative when present; omitted entirely
+  // when unset rather than forcing every editor to supply one.
+  secondaryImage: optionalNullable(sanityImageSchema),
+  secondaryImageAlt: optionalNullable(z.string()),
 });
 export const serviceItemSchema = z.object({
   icon: serviceIconSchema,
@@ -119,6 +131,29 @@ export const statsSectionSchema = z.object({
     .transform((value) => value ?? []),
 });
 
+// Sourced from docs/reference-site-audit.md §2.3/§4 — a homepage-only
+// "About" block (eyebrow, heading, 2 paragraphs, checklist, CTA, 2 offset
+// images) the audit flagged as a real gap ("no ticket currently covers
+// this as a homepage section"), distinct from the rejected SHU-016
+// standalone About *page*.
+export const aboutSectionSchema = z.object({
+  _type: z.literal("aboutSection"),
+  eyebrow: optionalNullable(z.string()),
+  heading: z.string().min(1),
+  bodyFirst: z.string().min(1),
+  bodySecond: optionalNullable(z.string()),
+  checklist: z
+    .array(z.string().min(1))
+    .nullish()
+    .transform((value) => value ?? []),
+  ctaLabel: optionalNullable(z.string()),
+  ctaHref: optionalNullable(z.string()),
+  imageFirst: sanityImageSchema,
+  imageFirstAlt: z.string().min(1),
+  imageSecond: optionalNullable(sanityImageSchema),
+  imageSecondAlt: optionalNullable(z.string()),
+});
+
 export const homePageSectionSchema = z.discriminatedUnion("_type", [
   heroSectionSchema,
   servicesSectionSchema,
@@ -126,6 +161,7 @@ export const homePageSectionSchema = z.discriminatedUnion("_type", [
   testimonialsSectionSchema,
   contactSectionSchema,
   statsSectionSchema,
+  aboutSectionSchema,
 ]);
 
 export type HeroSection = z.infer<typeof heroSectionSchema>;
@@ -134,6 +170,7 @@ export type GallerySection = z.infer<typeof gallerySectionSchema>;
 export type TestimonialsSection = z.infer<typeof testimonialsSectionSchema>;
 export type ContactSection = z.infer<typeof contactSectionSchema>;
 export type StatsSection = z.infer<typeof statsSectionSchema>;
+export type AboutSection = z.infer<typeof aboutSectionSchema>;
 export type HomePageSection = z.infer<typeof homePageSectionSchema>;
 
 export const homePageSchema = z.object({

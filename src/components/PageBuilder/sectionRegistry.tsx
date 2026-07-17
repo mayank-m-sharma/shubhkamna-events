@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 
+import { About } from "@/components/organisms/About";
 import { ContactSection } from "@/components/organisms/ContactSection";
 import { Gallery } from "@/components/organisms/Gallery";
 import { Hero } from "@/components/organisms/Hero";
@@ -57,4 +58,5 @@ export const sectionRegistry: {
     />
   ),
   statsSection: (section) => <Stats {...section} />,
+  aboutSection: (section) => <About {...section} />,
 };
