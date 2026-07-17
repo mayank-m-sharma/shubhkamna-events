@@ -40,7 +40,9 @@ describe("buildGalleryPageSeed", () => {
       mockClient("image-gallery-800x1000-webp"),
     );
 
+    expect(seed.eyebrow).toBe("Gallery");
     expect(seed.heading).toBe("Shubhkamna Events Masterpieces");
+    expect(seed.headingHighlight).toBe("Masterpieces");
     expect(seed.intro).toContain("1000+ happy events delivered");
   });
 

@@ -3,7 +3,8 @@ import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
 
 import { JsonLd } from "@/components/atoms/JsonLd";
-import { Gallery } from "@/components/organisms/Gallery";
+import { GalleryMasonry } from "@/components/organisms/GalleryMasonry";
+import { PageHero } from "@/components/organisms/PageHero";
 import { siteUrl } from "@/lib/sanity/env";
 import { getGalleryPage } from "@/lib/sanity/getGalleryPage";
 import { buildBreadcrumbJsonLd } from "@/lib/seo/jsonLd";
@@ -42,11 +43,13 @@ export default async function GalleryPage(): Promise<ReactNode> {
           { name: galleryPage.heading, url: galleryUrl },
         ])}
       />
-      <Gallery
+      <PageHero
+        eyebrow={galleryPage.eyebrow}
         heading={galleryPage.heading}
-        intro={galleryPage.intro}
-        images={galleryPage.images}
+        headlineHighlight={galleryPage.headingHighlight}
+        subhead={galleryPage.intro}
       />
+      <GalleryMasonry images={galleryPage.images} />
     </>
   );
 }

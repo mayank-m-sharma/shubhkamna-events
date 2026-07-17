@@ -14,7 +14,9 @@ interface GalleryPageImageSeed {
 }
 
 interface GalleryPageSeed {
+  eyebrow: string;
   heading: string;
+  headingHighlight: string;
   intro: string;
   images: GalleryPageImageSeed[];
 }
@@ -167,7 +169,9 @@ export async function buildGalleryPageSeed(
   );
 
   return {
+    eyebrow: "Gallery",
     heading: "Shubhkamna Events Masterpieces",
+    headingHighlight: "Masterpieces",
     intro:
       "A visual showcase of our elite event planning and luxury decor across Indore and beyond. Witness how we transform your special moments into unforgettable memories. 1000+ happy events delivered.",
     images,
