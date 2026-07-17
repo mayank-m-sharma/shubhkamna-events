@@ -1,0 +1,173 @@
+@use "../../../styles/mixins";
+
+.wrapper {
+  position: relative;
+  @include mixins.container;
+  padding-block: var(--space-2xl);
+  overflow: hidden;
+}
+
+// Soft decorative glow, echoing the homepage Hero's — a subtle wash of
+// opulence behind the grid, not competing with the photos themselves.
+.glow {
+  position: absolute;
+  top: -10%;
+  right: -5%;
+  width: 45%;
+  aspect-ratio: 1;
+  min-width: 320px;
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--color-accent) 30%, transparent) 0%,
+    transparent 70%
+  );
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+// True masonry via CSS multi-column — items flow into balanced columns at
+// their own natural aspect ratio (no forced crop, no JS measurement
+// needed since next/image already knows each asset's intrinsic size),
+// fixing the plain CSS-grid's row-height gaps between differently-shaped
+// photos.
+.masonry {
+  position: relative;
+  z-index: 1;
+  column-count: 1;
+  column-gap: var(--space-lg);
+
+  @include mixins.from(sm) {
+    column-count: 2;
+  }
+
+  @include mixins.from(lg) {
+    column-count: 3;
+  }
+}
+
+.item {
+  display: block;
+  width: 100%;
+  break-inside: avoid;
+  margin-bottom: var(--space-lg);
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 10px 30px -14px rgb(0 0 0 / 25%);
+  transition:
+    transform var(--transition-base),
+    box-shadow var(--transition-base);
+
+  &:hover,
+  &:focus-visible {
+    transform: translateY(-6px);
+    box-shadow: 0 24px 48px -16px rgb(0 0 0 / 35%);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: box-shadow var(--transition-base);
+
+    &:hover,
+    &:focus-visible {
+      transform: none;
+    }
+  }
+}
+
+.frame {
+  position: relative;
+  display: block;
+  width: 100%;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.media {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: transform var(--transition-base);
+
+  .item:hover &,
+  .item:focus-visible & {
+    transform: scale(1.06);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .item:hover &,
+    .item:focus-visible & {
+      transform: none;
+    }
+  }
+}
+
+// The glassmorphic caption card — frosted, translucent, blurred backdrop
+// so it reads clearly over any photo regardless of its own colors/
+// brightness, rather than a flat dark scrim.
+.glass {
+  position: absolute;
+  left: var(--space-sm);
+  right: var(--space-sm);
+  bottom: var(--space-sm);
+  padding: var(--space-md) var(--space-md) var(--space-sm);
+  border-radius: var(--radius-md);
+  background: rgb(15 15 25 / 35%);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  border: 1px solid rgb(255 255 255 / 18%);
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(10px);
+  transition:
+    opacity var(--transition-base),
+    transform var(--transition-base);
+  // Re-scopes the color tokens Heading/Text already read, rather than
+  // fighting their own `color: var(--color-text)` declarations with a
+  // separate override class — those atoms would otherwise always win
+  // since they set color directly, not by inheritance.
+  --color-text: var(--color-text-inverse);
+  --color-text-muted: rgb(255 255 255 / 78%);
+
+  // A slim gold-to-maroon accent line along the top edge, for a touch of
+  // opulence — a pseudo-element rather than `border-image` (which would
+  // paint the gradient across all four edges, not just the top).
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(
+      90deg,
+      var(--color-accent),
+      var(--color-primary)
+    );
+  }
+
+  .item:hover &,
+  .item:focus-visible & {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: opacity var(--transition-base);
+  }
+}
+
+.glassCaption {
+  margin: 0;
+}
+
+.glassCategory {
+  margin: 0;
+}

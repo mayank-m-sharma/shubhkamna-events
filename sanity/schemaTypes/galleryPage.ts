@@ -8,10 +8,22 @@ export const galleryPage = defineType({
   // type so there is always exactly one document to edit.
   fields: [
     defineField({
+      name: "eyebrow",
+      title: "Eyebrow label",
+      type: "string",
+    }),
+    defineField({
       name: "heading",
       title: "Heading",
       type: "string",
       validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: "headingHighlight",
+      title: "Heading gradient highlight",
+      description:
+        "Must exactly match the trailing portion of the heading to highlight.",
+      type: "string",
     }),
     defineField({
       name: "intro",

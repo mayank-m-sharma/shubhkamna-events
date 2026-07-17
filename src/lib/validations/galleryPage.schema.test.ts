@@ -26,6 +26,18 @@ describe("galleryPageSchema", () => {
     expect(parsed.images).toHaveLength(1);
   });
 
+  it("parses eyebrow and headingHighlight when given", () => {
+    const parsed = galleryPageSchema.parse({
+      eyebrow: "Gallery",
+      heading: "Shubhkamna Events Masterpieces",
+      headingHighlight: "Masterpieces",
+      images: [validImage],
+    });
+
+    expect(parsed.eyebrow).toBe("Gallery");
+    expect(parsed.headingHighlight).toBe("Masterpieces");
+  });
+
   it("defaults intro to undefined when null", () => {
     const parsed = galleryPageSchema.parse({
       heading: "Our Portfolio",

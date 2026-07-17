@@ -1,0 +1,117 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-md);
+  padding: var(--space-xl);
+  background: rgb(10 10 15 / 88%);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.imageWrapper {
+  position: relative;
+  width: min(90vw, 900px);
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 30px 80px -20px rgb(0 0 0 / 60%);
+}
+
+.image {
+  object-fit: contain;
+  background: rgb(0 0 0 / 30%);
+}
+
+.caption {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  align-items: center;
+  text-align: center;
+  padding: var(--space-sm) var(--space-xl);
+  border-radius: var(--radius-full);
+  background: rgb(255 255 255 / 10%);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  border: 1px solid rgb(255 255 255 / 18%);
+  // Re-scopes the color tokens Text already reads, rather than fighting
+  // its own `color: var(--color-text)` declaration with a direct override
+  // here — Text would otherwise always win since it sets color directly,
+  // not by inheritance.
+  --color-text: var(--color-text-inverse);
+  --color-text-muted: rgb(255 255 255 / 75%);
+}
+
+.close,
+.prev,
+.next {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(255 255 255 / 12%);
+  backdrop-filter: blur(12px) saturate(160%);
+  -webkit-backdrop-filter: blur(12px) saturate(160%);
+  border: 1px solid rgb(255 255 255 / 22%);
+  color: var(--color-text-inverse);
+  border-radius: var(--radius-full);
+  padding: var(--space-sm);
+  cursor: pointer;
+  transition:
+    background var(--transition-fast),
+    transform var(--transition-fast);
+
+  &:hover {
+    background: rgb(255 255 255 / 22%);
+    transform: scale(1.06);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-text-inverse);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &:hover {
+      transform: none;
+    }
+  }
+}
+
+.close {
+  top: var(--space-lg);
+  right: var(--space-lg);
+}
+
+.prev {
+  left: var(--space-lg);
+  top: 50%;
+  transform: translateY(-50%);
+
+  &:hover {
+    transform: translateY(-50%) scale(1.06);
+  }
+}
+
+.next {
+  right: var(--space-lg);
+  top: 50%;
+  transform: translateY(-50%);
+
+  &:hover {
+    transform: translateY(-50%) scale(1.06);
+  }
+}
+
+.prevIcon {
+  transform: rotate(90deg);
+}
+
+.nextIcon {
+  transform: rotate(-90deg);
+}

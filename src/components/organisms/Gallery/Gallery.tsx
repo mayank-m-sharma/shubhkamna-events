@@ -1,15 +1,16 @@
 "use client";
 
-import { useRef, useState, type ReactNode } from "react";
+import type { ReactNode } from "react";
 
 import { Heading } from "@/components/atoms/Heading";
 import { Link } from "@/components/atoms/Link";
 import { Text } from "@/components/atoms/Text";
+import { GalleryLightbox } from "@/components/molecules/GalleryLightbox";
+import { useGalleryLightbox } from "@/hooks/useGalleryLightbox";
 import type { GalleryProps } from "@/types/gallery";
 
 import styles from "./Gallery.module.scss";
 import { GalleryItem } from "./GalleryItem";
-import { GalleryLightbox } from "./GalleryLightbox";
 
 const GALLERY_HEADING_ID = "gallery-heading";
 
@@ -20,25 +21,15 @@ export function Gallery({
   viewAllHref,
   images,
 }: GalleryProps): ReactNode {
-  const [activeIndex, setActiveIndex] = useState<number | null>(null);
-  const triggerRefs = useRef<(HTMLButtonElement | null)[]>([]);
-  const returnFocusRef = useRef<HTMLElement | null>(null);
+  const {
+    activeIndex,
+    openLightbox,
+    closeLightbox,
+    handleNavigate,
+    setTriggerRef,
+    returnFocusRef,
+  } = useGalleryLightbox(images.length);
   const showViewAllLink = Boolean(viewAllLabel && viewAllHref);
-
-  function openLightbox(index: number): void {
-    returnFocusRef.current = triggerRefs.current[index] ?? null;
-    setActiveIndex(index);
-  }
-
-  function handleNavigate(direction: -1 | 1): void {
-    setActiveIndex((current) => {
-      if (current === null || images.length === 0) {
-        return current;
-      }
-
-      return (current + direction + images.length) % images.length;
-    });
-  }
 
   return (
     <section
@@ -65,9 +56,7 @@ export function Gallery({
               key={item.image.asset._id}
               item={item}
               onOpen={() => openLightbox(index)}
-              triggerRef={(el) => {
-                triggerRefs.current[index] = el;
-              }}
+              triggerRef={(el) => setTriggerRef(index, el)}
             />
           ))}
         </div>
@@ -76,7 +65,7 @@ export function Gallery({
         <GalleryLightbox
           images={images}
           index={activeIndex}
-          onClose={() => setActiveIndex(null)}
+          onClose={closeLightbox}
           onNavigate={handleNavigate}
           returnFocusRef={returnFocusRef}
         />

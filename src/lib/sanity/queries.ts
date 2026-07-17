@@ -189,7 +189,9 @@ export const serviceSlugsQuery = `*[_type == "service" && defined(slug.current)]
 }`;
 
 export const galleryPageQuery = `*[_type == "galleryPage"][0]{
+  eyebrow,
   heading,
+  headingHighlight,
   intro,
   images[]{
     image ${imageProjection},
