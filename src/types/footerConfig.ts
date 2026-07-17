@@ -15,4 +15,5 @@ export interface FooterProps {
   contactAddress?: string;
   socialLinks: SocialLink[];
   copyrightText?: string;
+  whatsappNumber?: string;
 }

@@ -93,3 +93,17 @@
     gap: var(--space-lg);
   }
 }
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.whatsappLink {
+  color: var(--color-whatsapp);
+}
+
+.visuallyHidden {
+  @include mixins.visually-hidden;
+}

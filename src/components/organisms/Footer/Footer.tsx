@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import { Icon } from "@/components/atoms/Icon";
 import { Link } from "@/components/atoms/Link";
 import { SocialLinksList } from "@/components/molecules/SocialLinksList";
+import { buildWhatsAppUrl } from "@/lib/utils/whatsapp";
 import type { FooterProps } from "@/types/footerConfig";
 
 import styles from "./Footer.module.scss";
@@ -14,9 +15,10 @@ export function Footer({
   contactAddress,
   socialLinks,
   copyrightText,
+  whatsappNumber,
 }: FooterProps): ReactNode {
   const hasContactInfo = Boolean(
-    contactPhone ?? contactEmail ?? contactAddress,
+    contactPhone ?? contactEmail ?? contactAddress ?? whatsappNumber,
   );
   const currentYear = new Date().getFullYear();
 
@@ -50,6 +52,14 @@ export function Footer({
               <span className={styles.contactRow}>
                 <Icon name="location" size="sm" />
                 <span>{contactAddress}</span>
+              </span>
+            ) : null}
+            {whatsappNumber ? (
+              <span className={styles.contactRow}>
+                <Icon name="whatsapp" size="sm" />
+                <Link href={buildWhatsAppUrl(whatsappNumber)}>
+                  Chat on WhatsApp
+                </Link>
               </span>
             ) : null}
           </address>

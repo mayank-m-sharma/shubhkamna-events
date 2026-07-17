@@ -69,6 +69,28 @@ describe("Header", () => {
     ).not.toBeInTheDocument();
   });
 
+  it("renders a WhatsApp link built from siteSettings' number when given", () => {
+    render(
+      <Header
+        siteName="Shubhkamna Events"
+        navItems={navItems}
+        whatsappNumber="+919754455007"
+      />,
+    );
+
+    expect(
+      screen.getByRole("link", { name: /Chat on WhatsApp/ }),
+    ).toHaveAttribute("href", "https://wa.me/919754455007");
+  });
+
+  it("does not render a WhatsApp link when no number is configured", () => {
+    render(<Header siteName="Shubhkamna Events" navItems={navItems} />);
+
+    expect(
+      screen.queryByRole("link", { name: /Chat on WhatsApp/ }),
+    ).not.toBeInTheDocument();
+  });
+
   it("toggles the mobile menu open/closed and swaps the accessible name", async () => {
     const user = userEvent.setup();
     render(<Header siteName="Shubhkamna Events" navItems={navItems} />);

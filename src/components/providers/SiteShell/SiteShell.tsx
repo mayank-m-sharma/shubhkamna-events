@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 
+import { WhatsAppButton } from "@/components/molecules/WhatsAppButton";
 import { Footer } from "@/components/organisms/Footer";
 import { Header } from "@/components/organisms/Header";
 import { MainContent } from "@/components/providers/MainContent";
@@ -33,6 +34,7 @@ export async function SiteShell({
         navItems={headerConfig.navItems}
         ctaLabel={headerConfig.ctaLabel}
         ctaHref={headerConfig.ctaHref}
+        whatsappNumber={siteSettings.whatsappNumber}
       />
       <MainContent>{children}</MainContent>
       <Footer
@@ -42,7 +44,11 @@ export async function SiteShell({
         contactAddress={footerConfig.contactAddress}
         socialLinks={footerConfig.socialLinks}
         copyrightText={footerConfig.copyrightText}
+        whatsappNumber={siteSettings.whatsappNumber}
       />
+      {siteSettings.whatsappNumber ? (
+        <WhatsAppButton phoneNumber={siteSettings.whatsappNumber} />
+      ) : null}
     </>
   );
 }

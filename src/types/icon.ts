@@ -18,7 +18,8 @@ export type IconName =
   | "cake"
   | "temple"
   | "palette"
-  | "music-note";
+  | "music-note"
+  | "whatsapp";
 
 export type IconSize = "sm" | "md" | "lg";
 

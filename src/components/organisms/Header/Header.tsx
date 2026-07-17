@@ -9,6 +9,7 @@ import { Link } from "@/components/atoms/Link";
 import { NavLink } from "@/components/molecules/NavLink";
 import { useFocusTrap } from "@/hooks/useFocusTrap";
 import { cn } from "@/lib/utils/cn";
+import { buildWhatsAppUrl } from "@/lib/utils/whatsapp";
 import { useUIStore } from "@/store/useUIStore";
 import type { HeaderProps } from "@/types/headerConfig";
 
@@ -22,6 +23,7 @@ export function Header({
   navItems,
   ctaLabel,
   ctaHref,
+  whatsappNumber,
 }: HeaderProps): ReactNode {
   const isMobileNavOpen = useUIStore((state) => state.isMobileNavOpen);
   const toggleMobileNav = useUIStore((state) => state.toggleMobileNav);
@@ -74,11 +76,22 @@ export function Header({
               </li>
             ))}
           </ul>
-          {ctaLabel && ctaHref ? (
-            <Button href={ctaHref} variant="primary">
-              {ctaLabel}
-            </Button>
-          ) : null}
+          <div className={styles.actions}>
+            {whatsappNumber ? (
+              <Link
+                href={buildWhatsAppUrl(whatsappNumber)}
+                className={styles.whatsappLink}
+              >
+                <Icon name="whatsapp" />
+                <span className={styles.visuallyHidden}>Chat on WhatsApp</span>
+              </Link>
+            ) : null}
+            {ctaLabel && ctaHref ? (
+              <Button href={ctaHref} variant="primary">
+                {ctaLabel}
+              </Button>
+            ) : null}
+          </div>
         </nav>
       </div>
     </header>
